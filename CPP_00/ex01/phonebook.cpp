@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/15 10:56:02 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/15 12:28:41 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void PhoneBook::show_index_info()
      
      std::cout << "Type the index you are searching...:" << std::endl;
         std::cin >> index;
+        //INDEX : PROTEGER SI RECHERCHE + QUE CE QUI EXISTE !
     for (int i = 0; i < 5; i++)
     {
             print_text(info[index][i]);
