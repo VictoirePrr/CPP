@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 16:26:05 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/11 17:31:41 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/15 11:10:15 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,15 @@ int main(int argc, char* argv[]) {
         {
             for(int j = 0; argv[i][j]; j++)
             {
-                char c = toupper(argv[i][j]);
-                std::cout << c;
+                if (isalpha(argv[i][j]) && islower(argv[i][j]))
+                {
+                    char c = toupper(argv[i][j]);
+                    std::cout << c;
+                }
+                else
+                    std::cout << argv[i][j];
             }
+             std::cout << " ";
         }
     }
     else

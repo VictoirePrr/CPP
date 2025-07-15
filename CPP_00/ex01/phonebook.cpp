@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/12 17:01:25 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/15 10:56:02 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 void print_text(const std::string& text) 
 {
     if (text.length() > 10) 
-        std::cout << text.substr(0, 9) << "." << std::endl;
+        std::cout << text.substr(0, 9) << "." ;
     else 
-        std::cout << text << std::endl;
+        std::cout << text;
 }
 
 void PhoneBook::get_contact_info(int num)
 {
-    print_text("Enter your first name...:");
+    std::cout << "Enter your first name...:" << std::endl;
     std::cin >> info[num][0];
-    print_text("Enter your last name...:");  
+    std::cout << "Enter your last name...:" << std::endl;  
     std::cin >> info[num][1];
-    print_text("Enter your nickname...:");
+    std::cout << "Enter your nickname...:" << std::endl;
     std::cin >> info[num][2];
-    print_text("Enter your phone number...:");
+    std::cout << "Enter your phone number...:" << std::endl;
     std::cin >> info[num][3];
-    print_text("Enter your darkest secret...:");
+    std::cout << "Enter your darkest secret...:" << std::endl;
     std::cin >> info[num][4];
 }
 
@@ -41,7 +41,7 @@ void PhoneBook::show_contacts_info()
         std::cout << i << " | ";
         for (int j = 0; j < 5; j++)
         {
-            std::cout << info[i][j];
+            print_text(info[i][j]);
             if (j != 4)
               std::cout << " | ";
         }
@@ -59,7 +59,8 @@ void PhoneBook::show_index_info()
         std::cin >> index;
     for (int i = 0; i < 5; i++)
     {
-            std::cout << info[index][i] << std::endl;
+            print_text(info[index][i]);
+            std::cout << std::endl;
     }
 }
 
