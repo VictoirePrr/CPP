@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/15 12:28:41 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/16 11:18:52 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,29 @@ void PhoneBook::show_contacts_info()
     }
 }
 
-void PhoneBook::show_index_info()
+void PhoneBook::show_index_info(int num)
 {
     int index;
-     
-     std::cout << "Type the index you are searching...:" << std::endl;
+
+    std::cout << "Type the index you are searching...:" << std::endl;
+    while (true)
+    {
         std::cin >> index;
-        //INDEX : PROTEGER SI RECHERCHE + QUE CE QUI EXISTE !
+        if (std::cin.fail())
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            std::cout << "Invalid input. Please enter a valid integer index: ";
+        }
+        else if (index < 0 || index >= num)
+            std::cout << "Index does not exist. Please enter a number between 0 and " << (num - 1) << ": ";
+        else
+            break;
+    }
     for (int i = 0; i < 5; i++)
     {
-            print_text(info[index][i]);
-            std::cout << std::endl;
+        print_text(info[index][i]);
+        std::cout << std::endl;
     }
 }
 
@@ -73,9 +85,9 @@ int main()
     std::string cmd;
     
     std::cout << "Welcome to your Phonebook !" << std::endl;
-    std::cout << "Type ADD to add a new contact or SEARCH to find one." << std::endl;
     while (1)
     {
+        std::cout << "Type ADD to add a new contact or SEARCH to find one." << std::endl;
         std::cin >> cmd;
         if (cmd == "ADD")
         {
@@ -87,7 +99,7 @@ int main()
         else if (cmd == "SEARCH")
         {
              contact.show_phonebook(repertory);  
-             contact.print_specific_index(repertory);
+             contact.print_specific_index(repertory, num);
         }
         else if (cmd == "EXIT")
             return (0);
