@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/15 12:21:34 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/22 16:13:03 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/07/22 17:53:31 by vicperri          #+#    #+#             */
+/*   Updated: 2025/07/22 20:25:41 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
-void randomChump( std::string name ){
-    Zombie random(name);
-    random.announce();
-}
+#include <iostream>
+
+class Weapon {
+
+    private :
+    
+        std::string _type;
+
+    public :
+    
+    Weapon();
+    Weapon(std::string type);
+    ~Weapon();
+    
+    const std::string getType();
+    
+    void setType(std::string _new_type);
+    
+};
+
+#endif
