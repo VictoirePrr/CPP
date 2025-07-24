@@ -6,11 +6,11 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 11:21:32 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/23 14:17:03 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/24 16:20:04 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replace.h"
+#include "Replace.hpp"
 
 Replace::Replace(std::string& infile, std::string s1, std::string s2){
 

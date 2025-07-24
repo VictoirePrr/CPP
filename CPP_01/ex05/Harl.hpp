@@ -6,13 +6,14 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 14:29:31 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/23 14:34:10 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/24 16:14:43 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HARL_HPP
 #define HARL_HPP
 
+#include <iostream>
 
 class Harl {
     
@@ -23,6 +24,8 @@ class Harl {
         void error( void );
     
     public :
+        Harl();
+        ~Harl();
         void complain( std::string level );
     
 };

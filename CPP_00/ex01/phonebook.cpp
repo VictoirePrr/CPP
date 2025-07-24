@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/16 11:18:52 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/24 17:05:31 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void print_text(const std::string& text)
         std::cout << text;
 }
 
-void PhoneBook::get_contact_info(int num)
+void PhoneBook::get_contact_info(int num, int flag)
 {
+    (void)flag;
     std::cout << "Enter your first name...:" << std::endl;
     std::cin >> info[num][0];
     std::cout << "Enter your last name...:" << std::endl;  
@@ -51,7 +52,7 @@ void PhoneBook::show_contacts_info()
     }
 }
 
-void PhoneBook::show_index_info(int num)
+void PhoneBook::show_index_info(int num, int flag)
 {
     int index;
 
@@ -62,11 +63,13 @@ void PhoneBook::show_index_info(int num)
         if (std::cin.fail())
         {
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input. Please enter a valid integer index: ";
         }
-        else if (index < 0 || index >= num)
-            std::cout << "Index does not exist. Please enter a number between 0 and " << (num - 1) << ": ";
+        else if (flag == 0 && (index < 0 || index >= num))
+                std::cout << "Index does not exist. Please enter a number between 0 and " << (num - 1) << ": ";
+        else if (flag == 1 && (index < 0 || index >= 8))
+                std::cout << "Index does not exist. Please enter a number between 0 and 7 : ";
         else
             break;
     }
@@ -81,7 +84,8 @@ int main()
 {
     PhoneBook repertory;
     Contact contact;
-    int num = 0;  
+    int num = 0;
+    int flag = 0;
     std::string cmd;
     
     std::cout << "Welcome to your Phonebook !" << std::endl;
@@ -91,15 +95,18 @@ int main()
         std::cin >> cmd;
         if (cmd == "ADD")
         {
-            repertory.get_contact_info(num);
+            repertory.get_contact_info(num, flag);
                 num += 1;
-                if (num == 8)
-                    num = 7;
+                if (num >= 8)
+                {
+                    num = 0;
+                    flag = 1;
+                }
         }
         else if (cmd == "SEARCH")
         {
              contact.show_phonebook(repertory);  
-             contact.print_specific_index(repertory, num);
+             contact.print_specific_index(repertory, num, flag);
         }
         else if (cmd == "EXIT")
             return (0);
