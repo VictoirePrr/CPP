@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 15:31:57 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/28 11:23:17 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/07/25 15:33:14 by vicperri          #+#    #+#             */
+/*   Updated: 2025/07/28 15:51:12 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#include "Fixed.hpp"
 
-#include <iostream>
-
-class Fixed {
-
-    private :
-        int _value;
-        static const int _factor = 256;
+int main ()
+{
+    Fixed a;
     
-    public :
+    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
     
-    Fixed();
-    Fixed(const Fixed& other);
-    Fixed& operator=(const Fixed& other);
-    ~Fixed();
+    std::cout << a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
+    std::cout << a << std::endl;
+
+    std::cout << b << std::endl;
     
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
-
-
-#endif
+    std::cout << Fixed::max( a, b ) << std::endl;
+        
+    return (0);
+}

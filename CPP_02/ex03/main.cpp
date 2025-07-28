@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 15:31:57 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/28 11:23:17 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/07/25 15:33:14 by vicperri          #+#    #+#             */
+/*   Updated: 2025/07/28 17:10:34 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#include "include/Fixed.hpp"
+#include "include/Point.hpp"
 
-#include <iostream>
+int main ()
+{
+    Point A{0, 0};
+    Point B{5, 0};
+    Point C{0, 5};
 
-class Fixed {
+    Point P1{1, 1};
+    Point P2{6, 6};
 
-    private :
-        int _value;
-        static const int _factor = 256;
-    
-    public :
-    
-    Fixed();
-    Fixed(const Fixed& other);
-    Fixed& operator=(const Fixed& other);
-    ~Fixed();
-    
-    int getRawBits( void ) const;
-    void setRawBits( int const raw );
-};
+    std::cout << "P1 est " << (bsp(A, B, C, P1) ? "dans" : "hors") << " le triangle" <<  std::endl;
+    std::cout << "P2 est " << (bsp(A, B, C, P2) ? "dans" : "hors") << " le triangle" <<  std::endl;
 
-
-#endif
+    return (0);
+}
