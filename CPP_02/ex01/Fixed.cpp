@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:32:59 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/28 14:55:34 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/29 15:20:30 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void Fixed::setRawBits( int const raw ){
 }
 
 float Fixed::toFloat( void ) const {
-    return static_cast<float>(_value) / (1 << _factor);
+    return ((float)(_value) / (1 << _factor));
 }
 
 int Fixed::toInt( void ) const {
@@ -61,7 +61,7 @@ int Fixed::toInt( void ) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& f) {
-    float value = static_cast<float>(f._value) / (1 << f._factor);
+    float value = (float)(f._value) / (1 << f._factor);
     os << value;
-    return os;
+    return (os);
 }

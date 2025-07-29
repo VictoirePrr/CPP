@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:31:57 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/28 11:23:17 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/29 14:34:22 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Fixed {
 
     private :
         int _value;
-        static const int _factor = 256;
+        static const int _factor = 8;
     
     public :
     
