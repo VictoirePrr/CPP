@@ -1,7 +1,7 @@
 NAME	= phonebook
 CXX		= c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC		= phonebook.cpp
+SRC		= main.cpp contact.cpp phonebook.cpp
 INCLUDES = -Iinclude
 OBJ		= $(SRC:.cpp=.o)
 
