@@ -6,13 +6,10 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 12:04:36 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/14 18:45:06 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/30 14:46:55 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector>
-#include <algorithm>
-#include <functional>
 #include <iostream>
 #include <iomanip>
 #include <ctime>

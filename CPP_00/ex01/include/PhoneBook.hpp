@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 19:00:15 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/24 16:54:56 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/30 16:26:20 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,29 @@
 #include <iostream>
 #include <cctype>
 #include <limits>
+#include <sstream>
 
+#include "Contact.hpp"
 
 class PhoneBook {
-private:
-     std::string info[8][5]; 
     
-public:
-    void get_contact_info(int num, int flag); 
-    void show_contacts_info();
-    void show_index_info(int num, int flag);
+    private :
+    
+        std::string _userInput;
+        std::string _repertory[8][5]; 
+        
+    public :
+    
+        PhoneBook();
+        ~PhoneBook();
+
+        int _numContacts;
+
+        void add_contact(Contact& contact);
+        void show_contacts_info();
+        void show_index_info();
+
 };
 
-class Contact {   
-public:
-void show_phonebook(PhoneBook& contact) {
-    contact.show_contacts_info();
-    }
-void print_specific_index(PhoneBook& contact, int num, int flag) {
-    contact.show_index_info(num, flag);
-    }
-};
 
 #endif

@@ -6,110 +6,126 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/24 17:05:31 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/30 16:40:59 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
+
+PhoneBook::PhoneBook() {
+
+    std::cout << "Welcome to your Phonebook !" << std::endl;
+    while (1)
+    {
+        Contact newContact;
+        std::cout << "Type ADD to add a new contact or SEARCH to find one." << std::endl;
+        if (!std::getline(std::cin, _userInput)) {
+            if (std::cin.eof()) {
+                std::cout << "\nInput ended by EOF (Ctrl+D). Exiting." << std::endl;
+                break;
+            }
+            else {
+                std::cerr << "\nInput error occurred. Exiting." << std::endl;
+                break;
+            }
+        }
+        if (_userInput.empty()) {
+            std::cout << "Empty input." << std::endl;
+            continue;
+        }
+        if ( _userInput == "ADD")
+        {
+            newContact.get_contact_info();
+            add_contact(newContact);
+        }
+        else if ( _userInput == "SEARCH")
+        {
+            show_contacts_info();  
+            show_index_info();
+        }
+        else if ( _userInput == "EXIT")
+            break;
+    }
+}
+
+PhoneBook::~PhoneBook() {
+}
+
+void PhoneBook::add_contact(Contact& contact) {
+    
+    _numContacts += 1;
+    if (_numContacts >= 8)
+        _numContacts = 0; 
+                    
+    _repertory[_numContacts][0] = _numContacts + 1;
+    _repertory[_numContacts][1] = contact._firstName;
+    _repertory[_numContacts][2] = contact._lastName;
+    _repertory[_numContacts][3] = contact._nickname;
+}
 
 void print_text(const std::string& text) 
 {
     if (text.length() > 10) 
-        std::cout << text.substr(0, 9) << "." ;
+        std::cout << std::setw(9) << text.substr(0, 9) << "." ;
     else 
-        std::cout << text;
-}
-
-void PhoneBook::get_contact_info(int num, int flag)
-{
-    (void)flag;
-    std::cout << "Enter your first name...:" << std::endl;
-    std::cin >> info[num][0];
-    std::cout << "Enter your last name...:" << std::endl;  
-    std::cin >> info[num][1];
-    std::cout << "Enter your nickname...:" << std::endl;
-    std::cin >> info[num][2];
-    std::cout << "Enter your phone number...:" << std::endl;
-    std::cin >> info[num][3];
-    std::cout << "Enter your darkest secret...:" << std::endl;
-    std::cin >> info[num][4];
+        std::cout << std::setw(9) << text;
 }
 
 void PhoneBook::show_contacts_info()
 {
     for (int i = 0; i < 8; i++)
     {
-        std::cout << i << " | ";
+        std::cout << i << "|";
         for (int j = 0; j < 5; j++)
         {
-            print_text(info[i][j]);
+            print_text(_repertory[i][j]);
             if (j != 4)
-              std::cout << " | ";
+              std::cout << "|";
         }
         std::cout << std::endl;
-        if (info[i + 1][0].empty())
+        if (_repertory[i + 1][0].empty())
                i = 8; 
     }
 }
 
-void PhoneBook::show_index_info(int num, int flag)
+void PhoneBook::show_index_info()
 {
+    std::string input;
     int index;
 
-    std::cout << "Type the index you are searching...:" << std::endl;
+    std::cout << "Type the index you are searching (1 to " << _numContacts << "):" << std::endl;
     while (true)
     {
-        std::cin >> index;
-        if (std::cin.fail())
-        {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter a valid integer index: ";
+        std::cout << "> ";
+        if (!std::getline(std::cin, input)) {
+            if (std::cin.eof())
+                break;
+            else {
+                std::cerr << "\nInput error occurred. Exiting." << std::endl;
+                break;
+            }
         }
-        else if (flag == 0 && (index < 0 || index >= num))
-                std::cout << "Index does not exist. Please enter a number between 0 and " << (num - 1) << ": ";
-        else if (flag == 1 && (index < 0 || index >= 8))
-                std::cout << "Index does not exist. Please enter a number between 0 and 7 : ";
-        else
-            break;
-    }
-    for (int i = 0; i < 5; i++)
-    {
-        print_text(info[index][i]);
-        std::cout << std::endl;
+        if (input.empty()) {
+            std::cout << "Empty input. Please enter a valid index (1 to " << _numContacts << "):" << std::endl;
+            continue;
+        }
+        std::istringstream iss(input);
+        if (!(iss >> index) || !(iss.eof())) {
+            std::cout << "Invalid input. Please enter a valid number (1 to " << _numContacts << "):" << std::endl;
+            continue;
+        }
+        index -= 1;
+        if (index < 0 || index >= _numContacts) {
+            std::cout << "Index does not exist. Please enter a number between 1 and " << _numContacts << ": ";
+            continue;
+        }
+        for (int i = 0; i < 5; i++) {
+            print_text(_repertory[index][i]);
+            std::cout << std::endl;
+        }
+        break;
     }
 }
 
-int main()
-{
-    PhoneBook repertory;
-    Contact contact;
-    int num = 0;
-    int flag = 0;
-    std::string cmd;
-    
-    std::cout << "Welcome to your Phonebook !" << std::endl;
-    while (1)
-    {
-        std::cout << "Type ADD to add a new contact or SEARCH to find one." << std::endl;
-        std::cin >> cmd;
-        if (cmd == "ADD")
-        {
-            repertory.get_contact_info(num, flag);
-                num += 1;
-                if (num >= 8)
-                {
-                    num = 0;
-                    flag = 1;
-                }
-        }
-        else if (cmd == "SEARCH")
-        {
-             contact.show_phonebook(repertory);  
-             contact.print_specific_index(repertory, num, flag);
-        }
-        else if (cmd == "EXIT")
-            return (0);
-    }
-    return (0);
-}
+
