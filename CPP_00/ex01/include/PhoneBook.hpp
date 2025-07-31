@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 19:00:15 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/30 16:26:20 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/31 17:11:14 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PhoneBook {
     private :
     
         std::string _userInput;
-        std::string _repertory[8][5]; 
+        std::string _repertory[8][4]; 
         
     public :
     
@@ -34,6 +34,8 @@ class PhoneBook {
         ~PhoneBook();
 
         int _numContacts;
+        const int _maxContacts;
+        int *_flag;
 
         void add_contact(Contact& contact);
         void show_contacts_info();
