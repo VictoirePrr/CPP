@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/30 16:40:59 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/07/31 17:14:53 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook() {
+PhoneBook::PhoneBook() : _numContacts(0), _maxContacts(8), _flag(&_numContacts) {
 
     std::cout << "Welcome to your Phonebook !" << std::endl;
     while (1)
@@ -54,38 +54,44 @@ PhoneBook::~PhoneBook() {
 
 void PhoneBook::add_contact(Contact& contact) {
     
-    _numContacts += 1;
     if (_numContacts >= 8)
-        _numContacts = 0; 
-                    
-    _repertory[_numContacts][0] = _numContacts + 1;
+    {
+        _flag = const_cast<int*>(&_maxContacts);
+        _numContacts = 0;
+    }
+    std::stringstream ss;
+    ss << (_numContacts + 1);      
+    _repertory[_numContacts][0] = ss.str();
     _repertory[_numContacts][1] = contact._firstName;
     _repertory[_numContacts][2] = contact._lastName;
     _repertory[_numContacts][3] = contact._nickname;
+    
+    _numContacts += 1;
 }
 
 void print_text(const std::string& text) 
 {
-    if (text.length() > 10) 
-        std::cout << std::setw(9) << text.substr(0, 9) << "." ;
-    else 
-        std::cout << std::setw(9) << text;
+    if (text.length() > 10) {
+        std::string truncated = text.substr(0, 9) + ".";
+        std::cout << std::setw(10) << truncated;
+    } else {
+        std::cout << std::setw(10) << text;
+    }
 }
 
 void PhoneBook::show_contacts_info()
 {
     for (int i = 0; i < 8; i++)
     {
-        std::cout << i << "|";
-        for (int j = 0; j < 5; j++)
+        if (_repertory[i][0].empty())
+            break;
+        for (int j = 0; j < 4; j++)
         {
             print_text(_repertory[i][j]);
-            if (j != 4)
-              std::cout << "|";
+            if (j != 3)
+                std::cout << "|";
         }
         std::cout << std::endl;
-        if (_repertory[i + 1][0].empty())
-               i = 8; 
     }
 }
 
@@ -94,7 +100,7 @@ void PhoneBook::show_index_info()
     std::string input;
     int index;
 
-    std::cout << "Type the index you are searching (1 to " << _numContacts << "):" << std::endl;
+    std::cout << "Type the index you are searching (1 to " << *_flag << "):" << std::endl;
     while (true)
     {
         std::cout << "> ";
@@ -107,22 +113,21 @@ void PhoneBook::show_index_info()
             }
         }
         if (input.empty()) {
-            std::cout << "Empty input. Please enter a valid index (1 to " << _numContacts << "):" << std::endl;
+            std::cout << "Empty input. Please enter a valid index (1 to " << *_flag << "):" << std::endl;
             continue;
         }
         std::istringstream iss(input);
         if (!(iss >> index) || !(iss.eof())) {
-            std::cout << "Invalid input. Please enter a valid number (1 to " << _numContacts << "):" << std::endl;
+            std::cout << "Invalid input. Please enter a valid number (1 to " << *_flag << "):" << std::endl;
             continue;
         }
         index -= 1;
-        if (index < 0 || index >= _numContacts) {
-            std::cout << "Index does not exist. Please enter a number between 1 and " << _numContacts << ": ";
+        if (index < 0 || index > *_flag - 1 ) {
+            std::cout << "Index does not exist. Please enter a number between 1 and " << *_flag << ": ";
             continue;
         }
-        for (int i = 0; i < 5; i++) {
-            print_text(_repertory[index][i]);
-            std::cout << std::endl;
+        for (int i = 0; i < 4; i++) {
+            std::cout << _repertory[index][i] << std::endl;
         }
         break;
     }
