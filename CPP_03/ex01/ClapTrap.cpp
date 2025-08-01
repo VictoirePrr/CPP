@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 15:49:05 by victoire          #+#    #+#             */
-/*   Updated: 2025/07/30 13:27:51 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/01 11:13:18 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
         
 ClapTrap::ClapTrap(){
-    _hitPoints = 10;
-    _energyPoints = 10;
-    _attackDamage = 0;
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 20;
     _name = "Default name";
     std::cout << "ClapTrap construcutor created "<< _name << std::endl;
 }
@@ -26,7 +26,7 @@ ClapTrap::ClapTrap(const ClapTrap& other){
     this->_hitPoints = other._hitPoints;
     this->_energyPoints = other._energyPoints;
     this->_attackDamage = other._attackDamage;
-    std::cout << "ClapTrap copy construcutor created "<< _name << std::endl;
+    std::cout << "ClapTrap copy construcutor copied "<< _name << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other){
@@ -37,7 +37,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other){
         this->_energyPoints = other._energyPoints;
         this->_attackDamage = other._attackDamage;
      }
-    std::cout << "ClapTrap copy operator created "<< _name << std::endl;
+    std::cout << "ClapTrap copy operator copied "<< _name << std::endl;
     return (*this);
 }
 
@@ -46,11 +46,11 @@ ClapTrap::~ClapTrap(){
 }
 
 ClapTrap::ClapTrap(std::string name){
-    _hitPoints = 10;
-    _energyPoints = 10;
-    _attackDamage = 0;
+    _hitPoints = 100;
+    _energyPoints = 50;
+    _attackDamage = 20;
     _name = name; 
-    std::cout << "ClapTrap construcutor created "<< _name << std::endl;  
+    std::cout << "ClapTrap constructor created "<< _name << std::endl;  
 }
 
 void ClapTrap::attack(const std::string& target) {

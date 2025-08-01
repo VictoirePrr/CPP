@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:31:07 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/30 13:55:32 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/01 15:21:53 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #define SCAVTRAP_H
 
 #include <iostream>
-#include "ClapTrap.cpp"
+#include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap  {
     
     private :
 
     public :
     
     ScavTrap();
-    ScavTrap(ScavTrap& other);
-    ScavTrap& operator=(ScavTrap& other);
+    ScavTrap(const ScavTrap& other);
+    ScavTrap& operator=(const ScavTrap& other);
     ~ScavTrap();
 
     ScavTrap(std::string name);
-    void attack(const std::string& target);
+    virtual void attack(const std::string& target);
     void guardGate();
     
     

@@ -3,44 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 12:53:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/30 13:59:51 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/01 14:45:06 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
+#define RESET       "\033[0m"
+#define RED         "\033[31m"
+
+#include <iostream>
+#include "ScavTrap.hpp"
+
 int main() {
-    std::cout << "Creating ClapTrap called Iris:" << std::endl;
-    ClapTrap ct1("Iris");
+        std::cout << RED << "=== ClapTrap Test Begins ===" << RESET << std::endl;
 
-    std::cout << "\nCreating ScavTrap called Felix:" << std::endl;
-    ScavTrap st1("Felix");
+    ClapTrap manon("Manon");
 
-    std::cout << "\nTesting ClapTrap attack:" << std::endl;
-    ct1.attack("Manon");
+    std::cout << RED << "\n-- Action Phase --" << RESET << std::endl;
+    manon.attack("cardboard dummy");
+    manon.takeDamage(3);
+    manon.beRepaired(5);
+    manon.attack("practice bot");
+    manon.takeDamage(15);
+    manon.beRepaired(5);
+    manon.attack("training drone");
+   
+    std::cout << RED << "=== ScavTrap Test Begins ===" << RESET << std::endl;
 
-    std::cout << "\nTesting ScavTrap attack and guardGate:" << std::endl;
-    st1.attack("Arthur");
-    st1.guardGate();
+    ScavTrap felix("Felix");
 
-    std::cout << "\nTesting takeDamage and beRepaired:" << std::endl;
-    st1.takeDamage(30);
-    st1.beRepaired(20);
+    std::cout << RED << "\n-- Action Phase --" << RESET << std::endl;
+    felix.attack("rusty target");
+    felix.takeDamage(25);
+    felix.beRepaired(10);
+    felix.guardGate();
 
-    std::cout << "\nDemonstrating copy constructor and assignment operator with ScavTrap:" << std::endl;
-    ScavTrap st2 = st1;
-    st2.attack("copied target");
-
-    ScavTrap st3;
-    st3 = st2;
-    st3.guardGate();
-
-    std::cout << "\nDestroying objects now..." << std::endl;
-
+    std::cout << RED << "\n=== Test Ends ===" << RESET << std::endl;
     return 0;
 }
+
 

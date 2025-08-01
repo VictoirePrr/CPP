@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:31:10 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/01 14:31:06 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/01 15:45:31 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 }
 
 void ScavTrap::attack(const std::string& target) {
-    std::cout << "ScavTrap " << _name << " attacks " << target <<", causing " << _attackDamage << " points of damage!" << std::endl;
+    std::cout << "ScavTrap " << _name << " attacks " 
+    << target <<", causing " << _attackDamage << " points of damage!" << std::endl;
 }
 
 void ScavTrap::guardGate(void) {
