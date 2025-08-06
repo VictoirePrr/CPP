@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:53:31 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/22 20:25:41 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 13:34:51 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class Weapon {
     ~Weapon();
     
     const std::string getType();
-    
     void setType(std::string _new_type);
     
 };

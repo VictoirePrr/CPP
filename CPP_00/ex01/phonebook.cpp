@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/06 10:44:11 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 15:22:42 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ PhoneBook::PhoneBook() : _numContacts(0), _maxContacts(8), _flag(&_numContacts) 
                 break;
             }
             else {
-                std::cerr << "\nInput error occurred. Exiting." << std::endl;
+                std::cout << "\nInput error occurred. Exiting." << std::endl;
                 break;
             }
         }
@@ -103,7 +103,7 @@ void PhoneBook::show_index_info()
             if (std::cin.eof())
                 break;
             else {
-                std::cerr << "\nInput error occurred. Exiting." << std::endl;
+                std::cout << "\nInput error occurred. Exiting." << std::endl;
                 break;
             }
         }

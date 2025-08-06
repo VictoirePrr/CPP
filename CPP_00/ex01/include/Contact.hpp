@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 14:45:35 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/06 10:41:33 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 15:26:07 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ class Contact {
         std::string get_darkestSecret();
         
 };
+
+void getNonEmptyInput(const std::string& message, std::string& target);
 
 #endif
