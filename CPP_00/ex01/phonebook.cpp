@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 18:58:50 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/31 17:14:53 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 10:44:11 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,11 @@ PhoneBook::~PhoneBook() {
 }
 
 void PhoneBook::add_contact(Contact& contact) {
-    
-    if (_numContacts >= 8)
-    {
+    if (_numContacts >= 8) {
         _flag = const_cast<int*>(&_maxContacts);
         _numContacts = 0;
     }
-    std::stringstream ss;
-    ss << (_numContacts + 1);      
-    _repertory[_numContacts][0] = ss.str();
-    _repertory[_numContacts][1] = contact._firstName;
-    _repertory[_numContacts][2] = contact._lastName;
-    _repertory[_numContacts][3] = contact._nickname;
-    
+    _contacts[_numContacts] = contact;
     _numContacts += 1;
 }
 
@@ -83,14 +75,17 @@ void PhoneBook::show_contacts_info()
 {
     for (int i = 0; i < 8; i++)
     {
-        if (_repertory[i][0].empty())
+        if (_contacts[i]._firstName.empty())
             break;
-        for (int j = 0; j < 4; j++)
-        {
-            print_text(_repertory[i][j]);
-            if (j != 3)
-                std::cout << "|";
-        }
+        std::stringstream ss;
+        ss << (i + 1);
+        print_text(ss.str());
+        std::cout << "|";
+        print_text(_contacts[i]._firstName);
+        std::cout << "|";
+        print_text(_contacts[i]._lastName);
+        std::cout << "|";
+        print_text(_contacts[i]._nickname);
         std::cout << std::endl;
     }
 }
@@ -126,9 +121,11 @@ void PhoneBook::show_index_info()
             std::cout << "Index does not exist. Please enter a number between 1 and " << *_flag << ": ";
             continue;
         }
-        for (int i = 0; i < 4; i++) {
-            std::cout << _repertory[index][i] << std::endl;
-        }
+        std::cout << "First Name: " << _contacts[index]._firstName << std::endl;
+        std::cout << "Last Name: " << _contacts[index]._lastName << std::endl;
+        std::cout << "Nickname: " << _contacts[index]._nickname << std::endl;
+        std::cout << "PhoneNumber : " << _contacts[index].get_phoneNumber() << std::endl;
+        std::cout << "Darkest secret : " << _contacts[index].get_darkestSecret() << std::endl;
         break;
     }
 }

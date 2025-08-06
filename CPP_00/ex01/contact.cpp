@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 15:40:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/31 15:55:53 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 10:42:40 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,11 @@ void Contact::get_contact_info()
     std::getline(std::cin, _phoneNumber);
     std::cout << "Enter your darkest secret...:" << std::endl;
     std::getline(std::cin, _darkestSecret);
+}
+
+std::string Contact::get_phoneNumber() {
+    return(_phoneNumber);
+}
+std::string Contact::get_darkestSecret() {
+    return(_darkestSecret);
 }
