@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:54:43 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/22 17:45:38 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 11:08:14 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int main()
    std::string name = "David";
 
    Zombie *Horde = zombieHorde(N, name);
-   delete(Horde); // --> check if the entire array is deleted or just the first pointer
+   delete[] Horde; 
    return(0);
 }

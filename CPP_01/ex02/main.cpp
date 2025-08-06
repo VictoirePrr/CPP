@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:53:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/22 17:48:07 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 11:27:42 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main ()
     std::string &stringREF = str;
 
     std::cout << "Memory Adress of str : " << &str << std::endl;
-    std::cout << "Memory Adress of stringPTR : " << &stringPTR << std::endl;
+    std::cout << "Memory Adress of stringPTR : " << stringPTR << std::endl;
     std::cout << "Memory Adress of stringREF : " << &stringREF << std::endl;
 
     std::cout << "Value of str : " << str << std::endl;
