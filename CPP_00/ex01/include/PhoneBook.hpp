@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 19:00:15 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/31 17:11:14 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 10:50:22 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class PhoneBook {
     private :
     
         std::string _userInput;
-        std::string _repertory[8][4]; 
+        Contact _contacts[8];
         
     public :
     
