@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 14:31:10 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/24 16:25:19 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/06 14:25:00 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,32 +65,4 @@ void Harl::complain( std::string level ){
     if(compare[i] != level)
         std::cout << "Comment not found." << std::endl;
 }
-
-// void Harl::complain( std::string level ){
-    
-//     int result;
-//     enum lvl { DEBUG, INFO, WARNING, ERROR };
-    
-//      switch (lvl) {
-//         case DEBUG :  result = level.compare("DEBUG"); 
-//             break;
-//         case INFO:  result = level.compare("DEBUG");
-//             break;
-//         case WARNING:  result = level.compare("DEBUG");
-//             break;
-//         case ERROR:  result = level.compare("DEBUG");
-//             break;
-//     };
-    
-//     switch (result) {
-//         case DEBUG : debug(); 
-//             break;
-//         case INFO: info(); 
-//             break;
-//         case WARNING: warning(); 
-//             break;
-//         case ERROR: error(); 
-//             break;
-//     }
-// }
 
