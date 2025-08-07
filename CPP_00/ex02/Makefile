@@ -6,26 +6,28 @@
 #    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/11 16:25:47 by vicperri          #+#    #+#              #
-#    Updated: 2025/07/14 18:20:51 by vicperri         ###   ########lyon.fr    #
+#    Updated: 2025/08/07 10:39:46 by vicperri         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= account
-CXX		= c++
-CXXFLAGS= -Wall -Wextra -Werror -std=c++98
-SRC		= Account.cpp tests.cpp
-OBJ		= $(SRC:.cpp=.o)
+NAME     = account
+CXX      = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD
+SRC      = Account.cpp tests.cpp
+OBJDIR   = build
+OBJ      = $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
@@ -33,3 +35,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(OBJ:%.o=%.d)

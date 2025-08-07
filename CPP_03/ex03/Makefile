@@ -3,36 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/08/01 15:48:36 by victoire         ###   ########lyon.fr    #
+#    Updated: 2025/08/07 10:45:26 by vicperri         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = ClapTrap
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -Wshadow -std=c++98
+CXXFLAGS    = -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD
 SRC         = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
-INCLUDES    = -Iinclude
-
-OBJ_DIR     = obj
-OBJ         = $(SRC:.cpp=.o)
-OBJ         := $(addprefix $(OBJ_DIR)/, $(notdir $(OBJ)))
+INCLUDES = -Iinclude
+OBJDIR   = build
+OBJ      = $(SRC:%.cpp=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJDIR)/%.o: %.cpp
+	@mkdir -p $(OBJDIR)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
@@ -40,3 +36,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(OBJ:%.o=%.d)
