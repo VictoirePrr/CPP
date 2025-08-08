@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 14:31:25 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 11:17:12 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define ANIMAL_HPP
 
 #include <iostream>
+
+#define RED   "\033[31m"
+#define RESET "\033[0m"
+
 
 class Animal {
   
@@ -30,7 +34,7 @@ class Animal {
 
     virtual void makeSound() const;
     virtual void setType();
-    virtual std::string getType() const;
+    std::string getType() const;
 };
 
 #endif

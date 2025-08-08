@@ -6,14 +6,14 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 14:29:52 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 11:16:50 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
 Animal::Animal() {
-    
+    setType();
 }
  
 Animal::Animal(const Animal &copy) {
@@ -32,11 +32,12 @@ Animal::~Animal() {
 
 void Animal::makeSound() const {
     
-    std::cout << "I do not know which sound make " << getType() << "but probably something like 'ROUAOUUUUUUUUUURR'" << std::endl;
+    std::cout << "I do not know which sound make " \
+   RED << getType() << RESET " but probably something like 'ROUAOUUUUUUUUUURR'" << std::endl;
 }
 
 std::string Animal::getType() const {
-    return(type);    
+    return(type);
 }
 
 void Animal::setType() {

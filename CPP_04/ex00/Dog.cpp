@@ -14,6 +14,7 @@
 #include "Animal.hpp"
 
 Dog::Dog() {
+    setType();
 }
  
 Dog::Dog(const Dog &copy) {
