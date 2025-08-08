@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/01 11:26:22 by victoire          #+#    #+#             */
-/*   Updated: 2025/08/07 11:34:51 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/07/23 14:30:55 by vicperri          #+#    #+#             */
+/*   Updated: 2025/07/25 11:14:27 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_H
-#define FRAGTRAP_H
+#include "Harl.hpp"
 
-#include <iostream>
-#include "ClapTrap.hpp"
-
-class FragTrap : virtual public ClapTrap {
+int main(int argc, char **argv)
+{
+    if(argc != 2)
+    {
+        std::cout << "Bad input." << std::endl;
+        return(1);
+    }
     
-    private :
-
-    public :
-    
-    FragTrap();
-    FragTrap(const FragTrap& other);
-    FragTrap& operator=(const FragTrap& other);
-    ~FragTrap();
-
-    FragTrap(std::string name);
-    void highFivesGuys(void);
-    
-  
-};
-
-#endif
+    HarlFilter level;
+    level.complain(argv[1]);
+    return (0);
+}

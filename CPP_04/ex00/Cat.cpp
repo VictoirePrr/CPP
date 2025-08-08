@@ -13,8 +13,9 @@
 #include "Cat.hpp"
 #include "Animal.hpp"
 
+
 Cat::Cat() {
-    setType();
+    type = "Cat";
 }
  
 Cat::Cat(const Cat &copy) {
@@ -31,9 +32,10 @@ Cat::~Cat() {
 }
 
 void Cat::makeSound() const {
-    std::cout << "MIAWW !" << std::endl;
+    std::cout << RED << "MIAWW !" << RESET << std::endl;
 }
 
 void Cat::setType() {
+    std::cout << "Cat::setType called\n";
     type = "Cat";
 }

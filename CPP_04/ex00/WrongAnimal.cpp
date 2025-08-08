@@ -32,7 +32,7 @@ WrongAnimal::~WrongAnimal() {
 
 void WrongAnimal::makeSound() const {
     
-    std::cout << "AHHHHHHHHHHHHHHHH" << std::endl;
+    std::cout << RED << "AHHHHHHHHHHHHHHHH" << RESET << std::endl;
 }
 
 std::string WrongAnimal::getType() const {
