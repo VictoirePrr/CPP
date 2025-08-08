@@ -14,6 +14,7 @@
 #include "Animal.hpp"
 
 Cat::Cat() {
+    setType();
 }
  
 Cat::Cat(const Cat &copy) {

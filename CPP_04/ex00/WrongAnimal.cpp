@@ -13,7 +13,7 @@
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal() {
-    
+    setType();
 }
  
 WrongAnimal::WrongAnimal(const WrongAnimal &copy) {

@@ -6,17 +6,17 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 14:39:09 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 11:07:58 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
 #include <iostream>
 #include "WrongAnimal.hpp"
 
-class WrongCat : virtual protected WrongAnimal {
+class WrongCat : virtual public WrongAnimal {
   
     protected :
 
