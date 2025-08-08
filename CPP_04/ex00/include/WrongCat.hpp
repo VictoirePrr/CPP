@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/08 11:07:58 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 13:08:39 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 #include "WrongAnimal.hpp"
 
 class WrongCat : virtual public WrongAnimal {
-  
-    protected :
-
-    std::string type;
 
     public :
 

@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/08 11:17:12 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 11:53:04 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Animal {
 
     virtual void makeSound() const;
     virtual void setType();
-    std::string getType() const;
+    virtual std::string getType() const;
 };
 
 #endif

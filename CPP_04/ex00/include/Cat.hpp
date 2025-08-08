@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 14:30:09 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/08 13:07:57 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 #include "Animal.hpp"
 
 class Cat : virtual public Animal {
-  
-    protected :
-
-    std::string type;
 
     public :
 
