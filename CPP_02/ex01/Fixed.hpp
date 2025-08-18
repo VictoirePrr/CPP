@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:31:57 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:12:46 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 13:07:42 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ class Fixed {
         float toFloat( void ) const;
         int toInt( void ) const;
 
-        friend std::ostream& operator<<(std::ostream& os, const Fixed& f);
-    //------> friend est interdit !!! trouver une autre solution
 };
+
+ std::ostream& operator<<(std::ostream& os, const Fixed& f);
 
 
 #endif

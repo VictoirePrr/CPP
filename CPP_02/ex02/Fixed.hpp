@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:31:57 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/28 15:30:00 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 15:21:23 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ class Fixed {
 
         float toFloat( void ) const;
         int toInt( void ) const;
-
-        friend std::ostream& operator<<(std::ostream& os, const Fixed& f);
         
-        Fixed operator>(const Fixed& other) const;
-        Fixed operator<(const Fixed& other) const;
-        Fixed operator>=(const Fixed& other) const;
-        Fixed operator==(const Fixed& other) const;
-        Fixed operator!=(const Fixed& other) const;
+        bool operator>(const Fixed& other) const;
+        bool operator<(const Fixed& other) const;
+        bool operator>=(const Fixed& other) const;
+        bool operator<=(const Fixed& other) const;
+        bool operator==(const Fixed& other) const;
+        bool operator!=(const Fixed& other) const;
 
         Fixed operator+(const Fixed& other) const;
         Fixed operator-(const Fixed& other) const;
@@ -57,13 +56,15 @@ class Fixed {
         Fixed& operator++();
         Fixed& operator--();
 
-        static Fixed min(Fixed& f0, Fixed& f1);
-        static Fixed min(const Fixed& f0, const Fixed& f1);
-        static Fixed max(Fixed& f0, Fixed& f1);
-        static Fixed max(const Fixed& f0, const Fixed& f1);
+        static Fixed& min(Fixed& f0, Fixed& f1);
+        static const Fixed& min(const Fixed& f0, const Fixed& f1);
+        static Fixed& max(Fixed& f0, Fixed& f1);
+        static const Fixed& max(const Fixed& f0, const Fixed& f1);
         
     
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& f);
 
 
 #endif

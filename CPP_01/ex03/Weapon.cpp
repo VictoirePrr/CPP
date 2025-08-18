@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 17:58:41 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/06 14:16:54 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 15:00:37 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ Weapon::Weapon(std::string type){
 Weapon::~Weapon(){
 }
 
-const std::string Weapon::getType(){
-    std::string const &typeREF = _type;
-    return(typeREF);
+const std::string &Weapon::getType(){
+    return(_type);
 }
     
 void Weapon::setType(std::string _new_type){
