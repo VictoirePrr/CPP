@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:21:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/16 13:55:37 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 10:17:08 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ int main()
     randomChump("Louis");
     randomChump("Jules");
     delete(z);
-    
 }
