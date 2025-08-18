@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:32:59 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/29 15:20:30 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 13:07:20 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int Fixed::toInt( void ) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& f) {
-    float value = (float)(f._value) / (1 << f._factor);
-    os << value;
+    os <<  f.toFloat();
     return (os);
 }
