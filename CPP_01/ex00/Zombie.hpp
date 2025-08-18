@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 12:21:41 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/22 15:59:47 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 10:15:39 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 #include <iostream>
 
-
 class Zombie {
     
     private:
+    
         std::string _name;
         
     public:

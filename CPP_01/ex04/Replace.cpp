@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 11:21:32 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/24 16:20:04 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/18 11:25:48 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ Replace::Replace(std::string& infile, std::string s1, std::string s2){
         std::cout << "Failed to open the input file." << std::endl;
         return;
     }
-    std::ofstream outputFile("output.txt");
+    std::string outputFilename = infile + ".replace";
+    std::ofstream outputFile(outputFilename.c_str());
     if (!outputFile.is_open()) {
         std::cout << "Failed to open the output file." << std::endl;
         inputFile.close();
