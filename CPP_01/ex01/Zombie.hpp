@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:57:12 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/18 10:29:20 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/19 09:56:33 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Zombie {
         ~Zombie();
         
         void announce(void);
-        void Setname(std::string name);
+        void setName(std::string name);
     
 };
 
