@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:15:18 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/08 13:15:40 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/19 14:20:09 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main()
 
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); // will output the cat sound
-    j->makeSound(); // will output the dog sound
-    meta->makeSound(); // base Animal sound
+    i->makeSound();
+    j->makeSound();
+    meta->makeSound();
 
     delete meta;
     delete j;
@@ -52,7 +52,8 @@ int main()
     const WrongAnimal* wrongCat = new WrongCat();
 
     std::cout << wrongCat->getType() << " " << std::endl;
-    wrongCat->makeSound(); // will display WrongAnimal sound if no virtual keyword is used
+    std::cout << wrongMeta->getType() << " " << std::endl;
+    wrongCat->makeSound();
     wrongMeta->makeSound();
 
     delete wrongMeta;
@@ -60,7 +61,7 @@ int main()
 
     std::cout << "\n=== Direct WrongCat Test ===" << std::endl;
     WrongCat directWrongCat;
-    directWrongCat.makeSound(); // should display WrongCat sound (no polymorphism here)
+    directWrongCat.makeSound();
 
     return 0;
 }

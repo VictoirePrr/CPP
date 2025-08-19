@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/07/23 11:16:43 by vicperri          #+#    #+#              #
+#    Updated: 2025/08/07 10:43:02 by vicperri         ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
+NAME	= replace
+CXX		= c++
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -MMD
+SRC		= main.cpp Replace.cpp
+OOBJDIR   = build
+OOBJ      = $(SRC:%.cpp=$(OOBJDIR)/%.o)
+
+all: $(NAME)
+
+$(NAME): $(OOBJ)
+	$(CXX) $(CXXFLAGS) $(OOBJ) -o $(NAME)
+
+$(OOBJDIR)/%.o: %.cpp
+	@mkdir -p $(OOBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(OOBJDIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+.PHOONY: all clean fclean re
+
+-include $(OOBJ:%.o=%.d)

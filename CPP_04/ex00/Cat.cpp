@@ -35,7 +35,3 @@ void Cat::makeSound() const {
     std::cout << RED << "MIAWW !" << RESET << std::endl;
 }
 
-void Cat::setType() {
-    std::cout << "Cat::setType called\n";
-    type = "Cat";
-}

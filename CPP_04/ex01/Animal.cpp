@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:31:54 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/19 15:11:12 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
 #include "Animal.hpp"
 
-Dog::Dog() {
-   type = "Dog";
+Animal::Animal() {
+     type = "Unknown animal";
+     std::cout << "Animal constructor called." << std::endl;
 }
  
-Dog::Dog(const Dog &copy) {
-        type = copy.type;
+Animal::Animal(const Animal &copy) {
+         type = copy.type;
 }
     
-Dog& Dog::operator=(const Dog &copy) {
-        if (this != &copy)
-            type = copy.type;
-        return(*this);
+Animal& Animal::operator=(const Animal &copy) {
+    if (this != &copy)
+         type = copy.type;
+    return (*this);
 }
     
-Dog::~Dog() {    
+Animal::~Animal() {
+    std::cout << "Animal destructor called." << std::endl;
 }
 
-void Dog::makeSound() const {
-    std::cout << RED << "WOUF !" << RESET << std::endl;
+void Animal::makeSound() const {
+    
+    std::cout << getType() << " probably sounds like " << RED << "'ROUAOUUUUUURR'" << RESET << std::endl;
+}
+
+std::string Animal::getType() const {
+    return(type);
 }
