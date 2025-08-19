@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:58:23 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/18 10:29:28 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/19 09:56:40 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Zombie::Zombie(){
 }
 
-void Zombie::Setname(std::string name){
+void Zombie::setName(std::string name){
     _name = name;
 }
 
