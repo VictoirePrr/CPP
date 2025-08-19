@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,26 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 #include "Animal.hpp"
 
-Dog::Dog() {
-   type = "Dog";
+
+Cat::Cat() {
+    type = "Cat";
+    std::cout << "Cat constructor called." << std::endl;
 }
  
-Dog::Dog(const Dog &copy) {
+Cat::Cat(const Cat &copy) {
         type = copy.type;
 }
     
-Dog& Dog::operator=(const Dog &copy) {
+Cat& Cat::operator=(const Cat &copy) {
         if (this != &copy)
             type = copy.type;
         return(*this);
 }
     
-Dog::~Dog() {    
+Cat::~Cat() {   
+    std::cout << "Cat destructor called." << std::endl; 
 }
 
-void Dog::makeSound() const {
-    std::cout << RED << "WOUF !" << RESET << std::endl;
+void Cat::makeSound() const {
+    std::cout << RED << "MIAWW !" << RESET << std::endl;
 }
+

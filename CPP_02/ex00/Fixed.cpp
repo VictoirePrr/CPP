@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 15:32:59 by vicperri          #+#    #+#             */
-/*   Updated: 2025/07/25 16:30:08 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/19 13:38:39 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int Fixed::getRawBits( void ) const {
     return (_value);
 }
 
-void Fixed::setRawBits( int const raw ){
+void Fixed::setRawBits( int const raw ) {
     std::cout << "setRawBits member function called" << std::endl;
     _value = raw;
 }

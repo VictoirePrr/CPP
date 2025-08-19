@@ -14,6 +14,7 @@
 
 WrongAnimal::WrongAnimal() {
     type = "Humain";
+    std::cout << "WrongAnimal constructor called." << std::endl;
 }
  
 WrongAnimal::WrongAnimal(const WrongAnimal &copy) {
@@ -27,6 +28,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &copy) {
 }
     
 WrongAnimal::~WrongAnimal() {
+    std::cout << "WrongAnimal destructor called." << std::endl;
         
 }
 

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:31:54 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/08/19 15:16:52 by vicperri          #+#    #+#             */
+/*   Updated: 2025/08/19 15:21:33 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-#include "Animal.hpp"
+#include "Brain.hpp"
 
-Dog::Dog() {
-   type = "Dog";
-}
- 
-Dog::Dog(const Dog &copy) {
-        type = copy.type;
-}
-    
-Dog& Dog::operator=(const Dog &copy) {
-        if (this != &copy)
-            type = copy.type;
-        return(*this);
-}
-    
-Dog::~Dog() {    
+Brain::Brain() {
+    std::cout << "Brain constructor called." << std::endl;
 }
 
-void Dog::makeSound() const {
-    std::cout << RED << "WOUF !" << RESET << std::endl;
+Brain& Brain::operator=(const Brain &copy) {
+    if(this != &copy)
+        //
+    return(*this);
+}
+
+Brain::Brain(const Brain &copy) {
+    //
+}
+
+Brain::~Brain() {
+    std::cout << "Brain destructor called." << std::endl;
 }
