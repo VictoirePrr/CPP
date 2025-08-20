@@ -6,14 +6,16 @@
 #    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/08/07 14:37:57 by vicperri         ###   ########lyon.fr    #
+#    Updated: 2025/08/20 10:18:13 by vicperri         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = Animal
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD
-SRC         = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRC         = main.cpp Animal.cpp Dog.cpp Cat.cpp \
+			WrongAnimal.cpp WrongCat.cpp \
+			Brain.cpp
 INCLUDES = -Iinclude
 OBJDIR   = build
 OBJ      = $(SRC:%.cpp=$(OBJDIR)/%.o)

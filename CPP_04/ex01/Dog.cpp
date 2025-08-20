@@ -15,6 +15,7 @@
 
 Dog::Dog() {
    type = "Dog";
+   Brain *brain = new Brain();
    std::cout << "Dog constructor called." << std::endl;
 }
  
@@ -28,7 +29,8 @@ Dog& Dog::operator=(const Dog &copy) {
         return(*this);
 }
     
-Dog::~Dog() {    
+Dog::~Dog() {
+    delete brain;  
     std::cout << "Dog destructor called." << std::endl;
 }
 

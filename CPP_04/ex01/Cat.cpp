@@ -16,6 +16,7 @@
 
 Cat::Cat() {
     type = "Cat";
+    Brain *brain = new Brain();
     std::cout << "Cat constructor called." << std::endl;
 }
  
@@ -29,7 +30,8 @@ Cat& Cat::operator=(const Cat &copy) {
         return(*this);
 }
     
-Cat::~Cat() {   
+Cat::~Cat() {
+    delete brain;
     std::cout << "Cat destructor called." << std::endl; 
 }
 

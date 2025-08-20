@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:16:52 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/19 15:21:33 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/20 10:32:15 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,23 @@ Brain::Brain() {
 }
 
 Brain& Brain::operator=(const Brain &copy) {
-    if(this != &copy)
-        //
+    
+    if (this != &copy)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            ideas[i] = copy.ideas[i];
+        }
+    }
     return(*this);
 }
 
 Brain::Brain(const Brain &copy) {
-    //
+   
+        for (int i = 0; i < 100; i++)
+        {
+            ideas[i] = copy.ideas[i];
+        }
 }
 
 Brain::~Brain() {
