@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:31:07 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/01 11:07:33 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/22 15:57:15 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 class ScavTrap : public ClapTrap {
     
-    private :
-
     public :
     
     ScavTrap();

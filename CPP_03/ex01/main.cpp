@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 12:53:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/01 14:45:06 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/22 15:58:01 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,25 @@
 #include "ScavTrap.hpp"
 
 int main() {
-        std::cout << RED << "=== ClapTrap Test Begins ===" << RESET << std::endl;
+    std::cout << RED << "=== ClapTrap Test Begins ===" << RESET << std::endl;
 
     ClapTrap manon("Manon");
 
     std::cout << RED << "\n-- Action Phase --" << RESET << std::endl;
-    manon.attack("cardboard dummy");
+    manon.attack("zombie");
     manon.takeDamage(3);
     manon.beRepaired(5);
-    manon.attack("practice bot");
+    manon.attack("vampire");
     manon.takeDamage(15);
     manon.beRepaired(5);
-    manon.attack("training drone");
+    manon.attack("bear");
    
     std::cout << RED << "=== ScavTrap Test Begins ===" << RESET << std::endl;
 
     ScavTrap felix("Felix");
 
     std::cout << RED << "\n-- Action Phase --" << RESET << std::endl;
-    felix.attack("rusty target");
+    felix.attack("Xavier Dupont de Ligonnes");
     felix.takeDamage(25);
     felix.beRepaired(10);
     felix.guardGate();
