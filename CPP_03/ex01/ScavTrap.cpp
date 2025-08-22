@@ -6,16 +6,17 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:31:10 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/01 14:31:06 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/22 16:16:16 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() {
+ScavTrap::ScavTrap() {
     _hitPoints = 100;
     _energyPoints = 50;
     _attackDamage = 20;
+    _name = "Default Scav name";
     std::cout << "Default ScavTrap constructor created "<< _name << std::endl;
 }
 
@@ -24,10 +25,12 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
-        if (this != &other)
-            ClapTrap::operator=(other); 
-        std::cout << "ScavTrap copy operator copied " << _name << std::endl;
-        return (*this);         
+    if (this != &other)
+    {
+         ClapTrap::operator=(other);    
+    }
+    std::cout << "ScavTrap copy operator copied " << _name << std::endl;
+    return (*this);         
 }
 
 ScavTrap::~ScavTrap() {
