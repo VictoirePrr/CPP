@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 12:53:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/01 15:23:46 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 09:20:40 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,31 @@
 #define RED         "\033[31m"
 
 int main() {
-    std::cout << RED << "\n---✨ Creating DiamondTrap Iris ✨---\n" << RESET;
+    std::cout << RED << "\n--- Creating DiamondTrap Iris ---\n" << RESET;
     DiamondTrap iris("Iris");
     iris.attack("a grumpy goblin");
     iris.takeDamage(20);
     iris.beRepaired(15);
     iris.whoAmI();
 
-    std::cout << RED << "\n---💎 Creating DiamondTrap Felix 💎---\n" << RESET;
+    std::cout << RED << "\n--- Creating DiamondTrap Felix ---\n" << RESET;
     DiamondTrap felix("Felix");
     felix.attack("a cursed vending machine");
     felix.whoAmI();
 
-    std::cout << RED << "\n---🛡️ Creating DiamondTrap Manon 🛡️---\n" << RESET;
+    std::cout << RED << "\n--- Creating DiamondTrap Manon ---\n" << RESET;
     DiamondTrap manon("Manon");
     manon.takeDamage(50);
     manon.beRepaired(30);
     manon.attack("a jealous ClapTrap");
     manon.whoAmI();
 
-    std::cout << RED << "\n---⚔️ Creating DiamondTrap Arthur ⚔️---\n" << RESET;
+    std::cout << RED << "\n--- Creating DiamondTrap Arthur ---\n" << RESET;
     DiamondTrap arthur("Arthur");
     arthur.attack("an innocent wall");
     arthur.whoAmI();
 
-    std::cout << RED << "\n🧪 Test Completed Successfully!\n" << RESET;
+    std::cout << RED << "\n Test Completed Successfully!\n" << RESET;
 
     return 0;
 }
