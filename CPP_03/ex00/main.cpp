@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 12:53:22 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 09:26:33 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 09:27:59 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int main() {
     manon.takeDamage(3);
     manon.beRepaired(5);
     manon.attack("vampire");
-    manon.takeDamage(15);  // Should bring HP to zero
-    manon.beRepaired(5);   // Should not work, no HP
-    manon.attack("bear"); // Should not work, no HP
+    manon.takeDamage(15);
+    manon.beRepaired(5);
+    manon.attack("bear");
 
     std::cout << RED << "\n=== ClapTrap Test Ends ===" << RESET << std::endl;
     return 0;
