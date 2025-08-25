@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                         :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:31:54 by vicperri         ###   ########lyon.fr   */
+/*   Created: 2025/08/25 13:37:00 by vicperri          #+#    #+#             */
+/*   Updated: 2025/08/25 13:44:17 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
 
-WrongCat::WrongCat() {
-}
- 
-WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy) {
-        type = copy.type;
-}
-    
-WrongCat& WrongCat::operator=(const WrongCat &copy) {
-        if (this != &copy)
-        {
-            WrongAnimal::operator=(copy);
-        }
-        return(*this);
-}
-    
-WrongCat::~WrongCat() {    
-}
+#include <iostream>
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+
+class Cure : public AMateria {
+  
+    protected :
+
+        std::string _type;
+
+    public :
+
+        Cure();
+        Cure(const Cure &copy);
+        Cure& operator=(const Cure &copy);
+        virtual ~Cure();
+
+        AMateria* clone() const;
+        void use(ICharacter& target);
+
+};
+
+#endif

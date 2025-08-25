@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                         :+:      :+:    :+:   */
+/*   AMateria.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:31:54 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 11:56:26 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-
-Cat::Cat() {
-    type = "Cat";
-    _brain = new Brain();
-    std::cout << "Cat constructor called." << std::endl;
+AMateria::AMateria() {
+     std::cout << "AMateria constructor called." << std::endl;
 }
  
-Cat::Cat(const Cat &copy) : Animal(copy)  {
-        type = copy.type;
+AMateria::AMateria(const AMateria &copy) : _type(copy._type) {
 }
     
-Cat& Cat::operator=(const Cat &copy) {
-        if (this != &copy)
-        {
-            Animal::operator=(copy);
-        }
-        return(*this);
+AMateria& AMateria::operator=(const AMateria &copy) {
+    if (this != &copy)
+    {
+         this->_type = copy._type;
+    }
+    return (*this);
 }
     
-Cat::~Cat() {
-    delete _brain;
-    std::cout << "Cat destructor called." << std::endl; 
+AMateria::~AMateria() {
+    std::cout << "AMateria destructor called." << std::endl;
 }
 
-void Cat::makeSound() const {
-    std::cout << RED << "MIAWW !" << RESET << std::endl;
+AMateria::AMateria(std::string const &type) :  _type(type) {
 }
 
+std::string const&  AMateria::getType() const {
+        return(_type);
+}
+
+void AMateria::use(ICharacter& target) {
+
+}

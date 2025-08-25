@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                         :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/07 11:31:54 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 11:56:26 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
 #include "Animal.hpp"
 
-
-Cat::Cat() {
-    type = "Cat";
-    _brain = new Brain();
-    std::cout << "Cat constructor called." << std::endl;
+Animal::Animal() {
+     type = "Unknown animal";
+     std::cout << "Animal constructor called." << std::endl;
 }
  
-Cat::Cat(const Cat &copy) : Animal(copy)  {
-        type = copy.type;
+Animal::Animal(const Animal &copy) {
+         type = copy.type;
 }
     
-Cat& Cat::operator=(const Cat &copy) {
-        if (this != &copy)
-        {
-            Animal::operator=(copy);
-        }
-        return(*this);
+Animal& Animal::operator=(const Animal &copy) {
+    if (this != &copy)
+         type = copy.type;
+    return (*this);
 }
     
-Cat::~Cat() {
-    delete _brain;
-    std::cout << "Cat destructor called." << std::endl; 
+Animal::~Animal() {
+    std::cout << "Animal destructor called." << std::endl;
 }
 
-void Cat::makeSound() const {
-    std::cout << RED << "MIAWW !" << RESET << std::endl;
+std::string Animal::getType() const {
+    return(type);
 }
-

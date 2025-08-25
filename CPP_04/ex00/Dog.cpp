@@ -17,13 +17,15 @@ Dog::Dog() {
    type = "Dog";
 }
  
-Dog::Dog(const Dog &copy) {
+Dog::Dog(const Dog &copy) : Animal(copy) {
         type = copy.type;
 }
     
 Dog& Dog::operator=(const Dog &copy) {
         if (this != &copy)
-            type = copy.type;
+        {
+            Animal::operator=(copy);
+        }
         return(*this);
 }
     

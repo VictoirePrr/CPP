@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:15:18 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 12:01:41 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 13:10:53 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ int main()
     }
     std::cout << RED << "Filling animal with Cat..." << RESET << std::endl;
     for(int k = 2; k < 4; k++)
-    {
+    { 
         tab[k] = new Cat;
     }
+    tab[1]->makeSound();
+    tab[3]->makeSound();
     std::cout << RED << "Deleting animal..." << RESET << std::endl;
     for(int k = 0; k < 4; k++)
     {
