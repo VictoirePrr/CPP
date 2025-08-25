@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 11:26:58 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 13:44:25 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef AMATERIA_HPP
+#define AMATERIA_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Dog : virtual public Animal {
+#define RED   "\033[31m"
+#define RESET "\033[0m"
 
-    private :
+#include "ICharacter.hpp"
 
-        Brain *_brain;
+class AMateria {
   
+    protected :
+
+        std::string _type;
+
     public :
 
-        Dog();
-        Dog(const Dog &copy);
-        Dog& operator=(const Dog &copy);
-        ~Dog();
+        AMateria();
+        AMateria(const AMateria &copy);
+        AMateria& operator=(const AMateria &copy);
+        virtual ~AMateria();
 
-        void makeSound() const;
+        AMateria(std::string const &type);
+
+        std::string const &getType() const;
+        virtual AMateria* clone() const = 0;
+        virtual void use(ICharacter& target);
+
 };
 
 #endif

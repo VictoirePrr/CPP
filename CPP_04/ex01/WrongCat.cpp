@@ -14,19 +14,19 @@
 #include "WrongAnimal.hpp"
 
 WrongCat::WrongCat() {
-        std::cout << "WrongCat constructor called." << std::endl;
 }
  
-WrongCat::WrongCat(const WrongCat &copy) {
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy) {
         type = copy.type;
 }
     
 WrongCat& WrongCat::operator=(const WrongCat &copy) {
         if (this != &copy)
-            type = copy.type;
+        {
+            WrongAnimal::operator=(copy);
+        }
         return(*this);
 }
     
 WrongCat::~WrongCat() {    
-        std::cout << "WrongCat destructor called." << std::endl;
 }

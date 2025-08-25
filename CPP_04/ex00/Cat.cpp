@@ -18,13 +18,15 @@ Cat::Cat() {
     type = "Cat";
 }
  
-Cat::Cat(const Cat &copy) {
+Cat::Cat(const Cat &copy) : Animal(copy) {
         type = copy.type;
 }
     
 Cat& Cat::operator=(const Cat &copy) {
         if (this != &copy)
-            type = copy.type;
+        {
+            Animal::operator=(copy);
+        }
         return(*this);
 }
     

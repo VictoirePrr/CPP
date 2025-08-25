@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 11:26:58 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/25 11:58:27 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Dog : virtual public Animal {
+#define RED   "\033[31m"
+#define RESET "\033[0m"
 
-    private :
 
-        Brain *_brain;
+class Animal {
   
+    protected :
+
+        std::string type;
+
     public :
 
-        Dog();
-        Dog(const Dog &copy);
-        Dog& operator=(const Dog &copy);
-        ~Dog();
+        Animal();
+        Animal(const Animal &copy);
+        Animal& operator=(const Animal &copy);
+        virtual ~Animal();
 
-        void makeSound() const;
+        virtual void makeSound() const = 0;
+        virtual std::string getType() const;
 };
 
 #endif

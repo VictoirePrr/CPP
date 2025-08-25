@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongWrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 11:26:58 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/07 14:34:55 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include <iostream>
 
-class Dog : virtual public Animal {
 
-    private :
+#define RED   "\033[31m"
+#define RESET "\033[0m"
 
-        Brain *_brain;
+class WrongAnimal {
   
+    protected :
+
+        std::string type;
+
     public :
 
-        Dog();
-        Dog(const Dog &copy);
-        Dog& operator=(const Dog &copy);
-        ~Dog();
+        WrongAnimal();
+        WrongAnimal(const WrongAnimal &copy);
+        WrongAnimal& operator=(const WrongAnimal &copy);
+        virtual ~WrongAnimal();
 
         void makeSound() const;
+        std::string getType() const;
 };
 
 #endif
