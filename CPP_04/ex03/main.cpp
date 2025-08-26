@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:15:18 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 10:21:33 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 16:29:58 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "Ice.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
+
 
 int main()
 {

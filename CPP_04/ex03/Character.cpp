@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 10:41:47 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 17:01:01 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() {
+Character::Character(std::string name) : ICharacter(name) {
+
 }
 
 Character::Character(const Character &copy) : ICharacter(copy) {
@@ -27,12 +28,7 @@ Character& Character::operator=(const Character &copy) {
     return(*this); 
 }
 
-
 Character::~Character() {
-}
-
-Character::Character(std::string name) {
-    this->name = name;
 }
 
 std::string const& Character::getName() const {
@@ -54,7 +50,7 @@ void Character::equip(AMateria* m) {
     if(_inventory[idx] == NULL && (m->getType() == "Ice" ||  m->getType() == "Cure"))
     {
         _inventory[idx] = m->clone();
-    }
+    }       
 }
 
 void Character::unequip(int idx) {

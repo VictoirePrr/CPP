@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:40:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 10:48:16 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 17:00:06 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ICharacter {
 
     public :
 
-        ICharacter();
+        ICharacter(std::string name);
         ICharacter(const ICharacter &copy);
         ICharacter& operator=(const ICharacter &copy);
         virtual ~ICharacter();
