@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 16:33:18 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:48:22 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ ICharacter& ICharacter::operator=(const ICharacter &copy) {
         }
     }
     return(*this); 
-}
-
-ICharacter::ICharacter(std::string name) {
-    this->name = name;
 }
 
 ICharacter::~ICharacter() {

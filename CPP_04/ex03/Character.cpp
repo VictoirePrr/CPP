@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 16:30:36 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:41:47 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ Character& Character::operator=(const Character &copy) {
 
 
 Character::~Character() {
+}
+
+Character::Character(std::string name) {
+    this->name = name;
 }
 
 std::string const& Character::getName() const {
@@ -55,6 +59,20 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
 
+    AMateria* tmp = _inventory[idx];
+    
+    if(_inventory[idx] != NULL && (_inventory[idx]->getType() == "Ice" ||  _inventory[idx]->getType() == "Cure"))
+    {
+        _inventory[idx] = NULL;
+        for (int i = 0; i < 4; i++)
+        {
+            if(_ground[i] == NULL)
+            {
+                _ground[i] = tmp;
+                break;
+            } 
+        }
+    }
     
 }
 

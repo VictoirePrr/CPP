@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:40:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 16:33:21 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:48:16 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class ICharacter {
 
         std::string name;
         AMateria *_inventory[4];
+        AMateria *_ground[4];
 
     public :
 
@@ -29,8 +30,6 @@ class ICharacter {
         ICharacter(const ICharacter &copy);
         ICharacter& operator=(const ICharacter &copy);
         virtual ~ICharacter();
-
-        virtual ICharacter(std::string name);
         
         virtual std::string const & getName() const = 0;
         virtual void equip(AMateria* m) = 0;

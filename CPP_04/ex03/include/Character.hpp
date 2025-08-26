@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:40:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 16:03:29 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:22:23 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Character : public ICharacter {
         Character(const Character &copy);
         Character& operator=(const Character &copy);
         virtual ~Character();
+
+        Character(std::string name);
 
         std::string const& getName() const;
         void equip(AMateria* m);
