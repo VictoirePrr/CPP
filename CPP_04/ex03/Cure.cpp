@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:37:32 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 13:39:01 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:47:00 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ AMateria* Cure::clone() const {
 }
 
 void Cure::use(ICharacter& target) {
-    std::cout << "* heals" << name << "'s wounds * " << std::endl;
+    std::cout << "* heals" << target.getName() << "'s wounds * " << std::endl;
 }

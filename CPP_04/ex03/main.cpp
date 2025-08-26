@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:15:18 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 13:49:01 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 10:21:33 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 #include "ICharacter.hpp"
+#include "Character.hpp"
 
 int main()
 {
