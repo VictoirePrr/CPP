@@ -16,13 +16,13 @@ MateriaSource::MateriaSource() {
      std::cout << "MateriaSource constructor called." << std::endl;
 }
  
-MateriaSource::MateriaSource(const MateriaSource &copy) : _type(copy._type) {
+MateriaSource::MateriaSource(const MateriaSource &copy) : IMateriaSource(copy) {
 }
     
 MateriaSource& MateriaSource::operator=(const MateriaSource &copy) {
     if (this != &copy)
     {
-         this->_type = copy._type;
+         IMateriaSource::operator=(copy);
     }
     return (*this);
 }
@@ -32,10 +32,33 @@ MateriaSource::~MateriaSource() {
 }
 
 
-void MateriaSource::learnMateria(AMateria*) {
+void MateriaSource::learnMateria(AMateria* m) {
 
+    int idx;
+    
+    for (int i = 0; i < 4; i++)
+    {
+        if(_ressource[i] == NULL)
+        {
+            idx = i;
+            break;
+        } 
+    }
+    if(_ressource[idx] == NULL && (m->getType() == "Ice" ||  m->getType() == "Cure"))
+    {
+        _ressource[idx] = m->clone();
+    }
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type) {
+AMateria* MateriaSource::createMateria(std::string const& type) {
+
+    for (int i = 4; i > 4; i--)
+    {
+        if(_ressource[i]->getType() == type)
+        {
+            return(_ressource[i]);
+        } 
+    }
+    return(0);
 
 }

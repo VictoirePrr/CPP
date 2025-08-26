@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 10:51:30 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/08/26 16:56:01 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 #define MATERIASOURCE_HPP
 
 #include <iostream>
-
-#define RED   "\033[31m"
-#define RESET "\033[0m"
-
 #include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
-class MateriaSource {
+
+class MateriaSource : public IMateriaSource{
   
-    protected :
-
-        std::string _type;
-
     public :
 
         MateriaSource();
         MateriaSource(const MateriaSource &copy);
         MateriaSource& operator=(const MateriaSource &copy);
-        virtual ~MateriaSource();
-
-        virtual ~MateriaSource() {}
-        virtual void learnMateria(AMateria*) = 0;
-        virtual AMateria* createMateria(std::string const & type) = 0;
+        ~MateriaSource() {}
+        
+        void learnMateria(AMateria* m);
+        AMateria* createMateria(std::string const & type);
 
 };
 
