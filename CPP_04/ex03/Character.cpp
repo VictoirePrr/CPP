@@ -6,14 +6,13 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 17:01:01 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/01 18:28:30 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character(std::string name) : ICharacter(name) {
-
+Character::Character(std::string c_name) : ICharacter(c_name) {
 }
 
 Character::Character(const Character &copy) : ICharacter(copy) {
@@ -37,8 +36,11 @@ std::string const& Character::getName() const {
 
 void Character::equip(AMateria* m) {
 
-    int idx;
-    
+    int idx = -1;
+
+    if (!m)
+        return;
+        
     for (int i = 0; i < 4; i++)
     {
         if(_inventory[i] == NULL)
@@ -47,18 +49,21 @@ void Character::equip(AMateria* m) {
             break;
         } 
     }
-    if(_inventory[idx] == NULL && (m->getType() == "Ice" ||  m->getType() == "Cure"))
-    {
-        _inventory[idx] = m->clone();
-    }       
+
+    if(idx != -1 && m && (m->getType() == "cure" ||  m->getType() == "ice"))
+        _inventory[idx] = m;
+    else
+        delete m;
 }
 
 void Character::unequip(int idx) {
 
-    AMateria* tmp = _inventory[idx];
-    
-    if(_inventory[idx] != NULL && (_inventory[idx]->getType() == "Ice" ||  _inventory[idx]->getType() == "Cure"))
+    if (idx < 0 || idx > 4)
+        return ;
+        
+    if(_inventory[idx] != NULL && (_inventory[idx]->getType() == "ice" ||  _inventory[idx]->getType() == "cure"))
     {
+        AMateria* tmp = _inventory[idx];
         _inventory[idx] = NULL;
         for (int i = 0; i < 4; i++)
         {
@@ -73,5 +78,6 @@ void Character::unequip(int idx) {
 }
 
 void Character::use(int idx, ICharacter& target) {
-    _inventory[idx]->use(target); 
+    if (idx >= 0 && idx < 4 &&_inventory[idx])
+        _inventory[idx]->use(target); 
 }

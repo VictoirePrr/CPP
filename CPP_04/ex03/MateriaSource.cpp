@@ -12,8 +12,7 @@
 
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource() {
-     std::cout << "MateriaSource constructor called." << std::endl;
+MateriaSource::MateriaSource() : IMateriaSource () {
 }
  
 MateriaSource::MateriaSource(const MateriaSource &copy) : IMateriaSource(copy) {
@@ -28,14 +27,15 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &copy) {
 }
     
 MateriaSource::~MateriaSource() {
-    std::cout << "MateriaSource destructor called." << std::endl;
 }
-
 
 void MateriaSource::learnMateria(AMateria* m) {
 
-    int idx;
+    int idx = -1;
     
+    if (!m)
+        return;
+
     for (int i = 0; i < 4; i++)
     {
         if(_ressource[i] == NULL)
@@ -44,21 +44,17 @@ void MateriaSource::learnMateria(AMateria* m) {
             break;
         } 
     }
-    if(_ressource[idx] == NULL && (m->getType() == "Ice" ||  m->getType() == "Cure"))
-    {
+
+    if(idx != -1 && m && (m->getType() == "ice" ||  m->getType() == "cure"))
         _ressource[idx] = m->clone();
-    }
+    delete m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {
-
-    for (int i = 4; i > 4; i--)
+    for (int i = 3; i >= 0; i--) 
     {
-        if(_ressource[i]->getType() == type)
-        {
-            return(_ressource[i]);
-        } 
+        if (_ressource[i] && _ressource[i]->getType() == type)
+            return (_ressource[i]->clone());
     }
-    return(0);
-
+    return 0;
 }

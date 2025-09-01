@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:40:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 17:00:06 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/01 10:31:32 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ICHARACTER_HPP
 
 #include <iostream>
-#include "AMateria.hpp"
+class AMateria;
 
 class ICharacter {
 
@@ -26,7 +26,7 @@ class ICharacter {
 
     public :
 
-        ICharacter(std::string name);
+        ICharacter(std::string c_name);
         ICharacter(const ICharacter &copy);
         ICharacter& operator=(const ICharacter &copy);
         virtual ~ICharacter();
