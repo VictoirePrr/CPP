@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:40:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/26 16:59:22 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/01 10:31:07 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Character : public ICharacter {
 
     public :
 
-        Character(std::string name);
+        Character(std::string c_name);
         Character(const Character &copy);
         Character& operator=(const Character &copy);
         ~Character();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:37:00 by vicperri          #+#    #+#             */
-/*   Updated: 2025/08/25 13:44:17 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/09/01 11:10:02 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 class Cure : public AMateria {
   
-    protected :
-
-        std::string _type;
 
     public :
 

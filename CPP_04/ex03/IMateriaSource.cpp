@@ -13,30 +13,43 @@
 #include "IMateriaSource.hpp"
 
 IMateriaSource::IMateriaSource() {
-     std::cout << "IMateriaSource constructor called." << std::endl;
+     for (int i = 0; i < 4; i++)
+        _ressource[i] = NULL;
 }
  
 IMateriaSource::IMateriaSource(const IMateriaSource &copy) : _type(copy._type) {
-
     for (int i = 0; i < 4; i++)
-        {
-            _ressource[i] = copy._ressource[i];
-        }
-        
+    {
+        if (copy._ressource[i])
+            _ressource[i] = copy._ressource[i]->clone();
+        else
+            _ressource[i] = NULL;
+    }
 }
-    
+
 IMateriaSource& IMateriaSource::operator=(const IMateriaSource &copy) {
     if (this != &copy)
     {
-         this->_type = copy._type;
-         for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            _ressource[i] = copy._ressource[i];
+            if (_ressource[i])
+                delete _ressource[i];
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            if (copy._ressource[i])
+                _ressource[i] = copy._ressource[i]->clone();
+            else
+                _ressource[i] = NULL;
         }
     }
     return (*this);
 }
     
 IMateriaSource::~IMateriaSource() {
-    std::cout << "IMateriaSource destructor called." << std::endl;
+     for (int i = 0; i < 4; i++)
+     {
+         if (_ressource[i])
+             delete _ressource[i];
+     }
 }

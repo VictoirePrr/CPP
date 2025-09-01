@@ -13,13 +13,13 @@
 #include "AMateria.hpp"
 
 AMateria::AMateria() {
-     std::cout << "AMateria constructor called." << std::endl;
 }
  
 AMateria::AMateria(const AMateria &copy) : _type(copy._type) {
 }
     
 AMateria& AMateria::operator=(const AMateria &copy) {
+
     if (this != &copy)
     {
          this->_type = copy._type;
@@ -28,7 +28,6 @@ AMateria& AMateria::operator=(const AMateria &copy) {
 }
     
 AMateria::~AMateria() {
-    std::cout << "AMateria destructor called." << std::endl;
 }
 
 AMateria::AMateria(std::string const &type) :  _type(type) {
@@ -39,5 +38,5 @@ std::string const&  AMateria::getType() const {
 }
 
 void AMateria::use(ICharacter& target) {
-
+    (void)target;
 }

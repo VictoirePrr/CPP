@@ -22,12 +22,15 @@ Cat::Cat() {
  
 Cat::Cat(const Cat &copy) : Animal(copy)  {
         type = copy.type;
+         _brain = new Brain(*copy._brain);
 }
     
 Cat& Cat::operator=(const Cat &copy) {
         if (this != &copy)
         {
             Animal::operator=(copy);
+            delete _brain;
+            _brain = new Brain(*copy._brain);
         }
         return(*this);
 }

@@ -20,6 +20,7 @@ Dog::Dog() {
 }
  
 Dog::Dog(const Dog &copy) : Animal(copy) {
+        _brain = new Brain(*copy._brain);
         type = copy.type;
 }
     
@@ -27,6 +28,8 @@ Dog& Dog::operator=(const Dog &copy) {
         if (this != &copy)
         {
             Animal::operator=(copy);
+            delete _brain;
+            _brain = new Brain(*copy._brain);
         }
         return(*this);
 }
