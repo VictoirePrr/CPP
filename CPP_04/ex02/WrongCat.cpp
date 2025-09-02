@@ -17,7 +17,6 @@ WrongCat::WrongCat() {
 }
  
 WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy) {
-        type = copy.type;
 }
     
 WrongCat& WrongCat::operator=(const WrongCat &copy) {
