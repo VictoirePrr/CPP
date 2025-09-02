@@ -46,8 +46,7 @@ void MateriaSource::learnMateria(AMateria* m) {
     }
 
     if(idx != -1 && m && (m->getType() == "ice" ||  m->getType() == "cure"))
-        _ressource[idx] = m->clone();
-    delete m;
+        _ressource[idx] = m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const& type) {

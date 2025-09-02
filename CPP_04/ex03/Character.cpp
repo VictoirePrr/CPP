@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/09/01 18:28:30 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/02 11:14:48 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ void Character::equip(AMateria* m) {
 
     if(idx != -1 && m && (m->getType() == "cure" ||  m->getType() == "ice"))
         _inventory[idx] = m;
-    else
-        delete m;
 }
 
 void Character::unequip(int idx) {
