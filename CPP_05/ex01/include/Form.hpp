@@ -1,7 +1,6 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include <iostream>
 #include "Bureaucrat.hpp"
 
 class Form {
@@ -33,13 +32,14 @@ class Form {
         Form(const Form& other);
         Form& operator=(const Form& other);
         ~Form();
+        Form(const std::string name, const int signGrade, const int execGrade);
 
 
         const std::string getName() const;
-        bool getSigned() const;
-        const int getSignGrade() const;
-        const int getExecGrade() const;
-        void beSigned(Bureaucrat &b);
+        bool isSigned() const;
+        int getSignGrade() const;
+        int getExecGrade() const;
+        bool beSigned(const int signature);
 
 };
 
