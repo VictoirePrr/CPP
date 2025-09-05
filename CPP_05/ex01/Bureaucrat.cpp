@@ -1,7 +1,8 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Bureaucrat Vic"), _grade(75) {
-    // do I put a random grade here ? do I make it impossible to instantiate without grade ?
+    
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name),  _grade (other._grade) {
@@ -42,6 +43,16 @@ void Bureaucrat::decrementGrade() {
     if (_grade >= 150)
         throw GradeTooLowException();
     _grade++; 
+}
+
+void Bureaucrat::signForm(Form &f) {
+
+    try {
+        f.beSigned(*this);
+    }
+    catch (std::exception &e) {
+        std::cout << getName() << " couldn't sign" << f.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
