@@ -46,6 +46,3 @@ void Dog::makeSound() const
 {
     std::cout << RED << "WOUF !" << RESET << std::endl;
 }
-
-//_ideas = ideas
-// deep copy

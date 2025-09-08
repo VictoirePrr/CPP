@@ -15,13 +15,12 @@
 
 
 Cat::Cat() {
+    std::cout << "Cat constructor called." << std::endl;
     type = "Cat";
     _ideas = new Brain();
-    std::cout << "Cat constructor called." << std::endl;
 }
  
 Cat::Cat(const Cat &copy) : Animal(copy)  {
-        type = copy.type;
          _ideas = new Brain(*copy._ideas);
 }
     

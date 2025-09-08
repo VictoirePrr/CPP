@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:01 by vicperri          #+#    #+#             */
-/*   Updated: 2025/09/08 11:40:51 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/09/08 14:11:04 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,4 @@ void Animal::makeSound() const {
 
 std::string Animal::getType() const {
     return(type);
-}
-
-void Animal::tot() {
-    type = "fjsdilfhjksdhf";
 }

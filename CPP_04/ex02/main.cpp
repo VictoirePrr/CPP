@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:15:18 by vicperri          #+#    #+#             */
-/*   Updated: 2025/09/08 11:45:37 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/09/08 14:13:04 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int main()
 {
     const Animal* j = new Dog();
     const Animal* i = new Cat();
-    const Animal* v = new Cat();
+
     delete j;
     delete i;
-    
-    std::cout << v->getType() << std::endl;
-    return 0;
+
     const Animal* tab[4];
     std::cout << RED << "Filling animal with Dog..." << RESET << std::endl;
     for(int k = 0; k < 2; k++)
