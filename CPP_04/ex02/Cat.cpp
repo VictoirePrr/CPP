@@ -16,27 +16,27 @@
 
 Cat::Cat() {
     type = "Cat";
-    _brain = new Brain();
+    _ideas = new Brain();
     std::cout << "Cat constructor called." << std::endl;
 }
  
 Cat::Cat(const Cat &copy) : Animal(copy)  {
         type = copy.type;
-         _brain = new Brain(*copy._brain);
+         _ideas = new Brain(*copy._ideas);
 }
     
 Cat& Cat::operator=(const Cat &copy) {
         if (this != &copy)
         {
             Animal::operator=(copy);
-            delete _brain;
-            _brain = new Brain(*copy._brain);
+            delete _ideas;
+            _ideas = new Brain(*copy._ideas);
         }
         return(*this);
 }
     
 Cat::~Cat() {
-    delete _brain;
+    delete _ideas;
     std::cout << "Cat destructor called." << std::endl; 
 }
 

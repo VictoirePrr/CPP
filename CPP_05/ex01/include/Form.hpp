@@ -39,7 +39,7 @@ class Form {
         bool isSigned() const;
         int getSignGrade() const;
         int getExecGrade() const;
-        bool beSigned(const int signature);
+        bool beSigned(Bureaucrat *b);
 
 };
 

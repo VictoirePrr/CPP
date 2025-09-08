@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:45:11 by vicperri          #+#    #+#             */
-/*   Updated: 2025/09/02 11:14:48 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/08 14:06:16 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void Character::equip(AMateria* m) {
 
     if (!m)
         return;
+
+     for (int i = 0; i < 4; i++)
+        if(_inventory[i] == m)
+            return ;
         
     for (int i = 0; i < 4; i++)
     {
@@ -68,9 +72,10 @@ void Character::unequip(int idx) {
             if(_ground[i] == NULL)
             {
                 _ground[i] = tmp;
-                break;
+                return ;
             } 
         }
+        std::cout << "Ground is full !" << std::endl;
     }
     
 }

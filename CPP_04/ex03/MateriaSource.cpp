@@ -37,8 +37,12 @@ void MateriaSource::learnMateria(AMateria* m) {
         return;
 
     for (int i = 0; i < 4; i++)
+        if(_ressource[i] == m)
+            return ;
+
+    for (int i = 0; i < 4; i++)
     {
-        if(_ressource[i] == NULL)
+        if(_ressource[i] == NULL )
         {
             idx = i;
             break;

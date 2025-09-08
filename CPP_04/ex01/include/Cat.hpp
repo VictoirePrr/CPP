@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 11:16:21 by vicperri          #+#    #+#             */
-/*   Updated: 2025/09/02 10:57:47 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/08 13:08:31 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Cat : public Animal {
 
     private :
 
-        Brain *_brain;
+        Brain *_ideas;
 
     public :
 

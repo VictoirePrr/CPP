@@ -8,12 +8,14 @@ _signGrade(10), _execGrade(75) {
 
 Form::Form(const std::string name, const int signGrade, const int execGrade) 
 : _name(name), _signGrade(signGrade), _execGrade(execGrade) {
-
+    if (_signGrade > 150 || _execGrade > 150)
+        throw GradeTooLowException();
+    if (_signGrade < 1 || _execGrade < 1)
+        throw GradeTooHighException();
 }
 
 Form::Form(const Form& other) : _name(other._name), _signed(other._signed),
  _signGrade(other._signGrade), _execGrade(other._execGrade) {
-
 }
 
 Form& Form::operator=(const Form& other) {
@@ -49,9 +51,9 @@ int Form::getExecGrade() const {
     return(_execGrade);
 }
 
-bool Form::beSigned(const int signature) {
+bool Form::beSigned(Bureaucrat *b) {
 
-    if (signature <= getExecGrade())
+    if (b->getGrade() <= getSignGrade())
     {
         _signed = true;
     }
