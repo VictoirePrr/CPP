@@ -2,6 +2,7 @@
 #define ShrubberyCreationForm_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm {
 
@@ -17,7 +18,7 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm(std::string target);
-		bool beSigned(Bureaucrat *b) const;
+		void executeAction() const ;
 };
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& f);

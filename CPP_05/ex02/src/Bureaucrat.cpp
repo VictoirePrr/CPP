@@ -2,7 +2,6 @@
 #include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Bureaucrat Vic"), _grade(75) {
-    
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name),  _grade (other._grade) {
@@ -54,6 +53,18 @@ void Bureaucrat::signForm(AForm &f) {
     }
     catch (std::exception &e) {
         std::cout << getName() << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const &form) {
+
+    try {
+        if (form.execute(this))
+            std::cout << getName() << " executed " << f.getName() << std::endl;
+
+    }
+    catch (std::exception &e) {
+        std::cout << getName() << " couldn't execute " << f.getName() << " because " << e.what() << std::endl;
     }
 }
 

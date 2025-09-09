@@ -13,10 +13,12 @@ class Bureaucrat
 {
 
     private:
+
         const std::string _name;
         int _grade;
 
     public:
+
         class GradeTooHighException : public std::exception
         {
         public:
@@ -46,8 +48,10 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
         void signForm(AForm &f);
+        void executeForm(AForm const & form);
+
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
-#endif \
+#endif

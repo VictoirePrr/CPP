@@ -17,7 +17,7 @@ class PresidentialPardonForm : public AForm {
 		~PresidentialPardonForm();
 
 		PresidentialPardonForm(std::string target);
-		bool beSigned(Bureaucrat *b) const;
+		void executeAction() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& f);

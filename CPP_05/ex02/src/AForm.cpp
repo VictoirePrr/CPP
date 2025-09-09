@@ -51,3 +51,23 @@ int AForm::getSignGrade() const {
 int AForm::getExecGrade() const {
     return(_execGrade);
 }
+
+bool AForm::beSigned(Bureaucrat *b) {
+
+    if (b->getGrade() <= getSignGrade())
+    {
+        _signed = true;
+    }
+    else
+        throw GradeTooLowException();
+    return (_signed);
+
+}
+
+void AForm::execute(Bureaucrat const &executor) const {
+    if (!isSigned())
+        FormNotSignedException();
+    if (executor.getGrade() > getExecGrade())
+        GradeTooLowException();
+    executeAction();
+}

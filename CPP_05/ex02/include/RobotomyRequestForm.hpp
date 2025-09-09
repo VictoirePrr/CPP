@@ -2,6 +2,7 @@
 #define RobotomyRequestForm_HPP
 
 #include "AForm.hpp"
+#include <ctime>
 
 class RobotomyRequestForm : public AForm {
 
@@ -17,7 +18,7 @@ class RobotomyRequestForm : public AForm {
 		~RobotomyRequestForm();
 
 		RobotomyRequestForm(std::string target);
-		bool beSigned(Bureaucrat *b) const;
+		void executeAction() const ;
 };
  
 std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& f);
