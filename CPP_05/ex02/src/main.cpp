@@ -4,6 +4,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+
 int main() {
     try {
         Bureaucrat boss("Alice", 1);
@@ -34,7 +35,7 @@ int main() {
         boss.executeForm(pardon);
 
     } catch (std::exception &e) {
-        std::cerr << "Exception caught: " << e.what() << std::endl;
+        std::cout << "Exception caught: " << e.what() << std::endl;
     }
     return 0;
 }

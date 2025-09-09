@@ -4,13 +4,12 @@
 #include <iostream>
 #include <exception>
 
-class AForm;
-
 #define RED "\033[31m"
 #define RESET "\033[0m"
 
-class Bureaucrat
-{
+class AForm;
+
+class Bureaucrat {
 
     private:
 
@@ -48,10 +47,10 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
         void signForm(AForm &f);
-        void executeForm(AForm const & form);
+        void executeForm(AForm const &form);
 
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
-#endif
+#endif // BUREAUCRAT_HPP

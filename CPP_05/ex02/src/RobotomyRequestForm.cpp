@@ -4,7 +4,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45
     _target = "default target";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other) {
     _target = other._target;
 }
 

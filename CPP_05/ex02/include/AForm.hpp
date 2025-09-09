@@ -1,7 +1,9 @@
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
-#include "Bureaucrat.hpp"
+#include <iostream>
+
+class Bureaucrat;
 
 class AForm {
 
@@ -46,8 +48,8 @@ class AForm {
         int getSignGrade() const;
         int getExecGrade() const;
 
-        bool beSigned(Bureaucrat *b);
-        void execute(Bureaucrat const &executor) const;
+        bool beSigned(Bureaucrat const &b);
+        bool execute(Bureaucrat const &executor) const;
 
         virtual void executeAction() const = 0; 
 
