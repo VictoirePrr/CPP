@@ -8,6 +8,7 @@ _signGrade(10), _execGrade(75) {
 
 Form::Form(const std::string name, const int signGrade, const int execGrade) 
 : _name(name), _signGrade(signGrade), _execGrade(execGrade) {
+    _signed = false;
     if (_signGrade > 150 || _execGrade > 150)
         throw GradeTooLowException();
     if (_signGrade < 1 || _execGrade < 1)
