@@ -4,9 +4,6 @@
 #include <iostream>
 #include <exception>
 
-#define RED "\033[31m"
-#define RESET "\033[0m"
-
 class AForm;
 
 class Bureaucrat {
@@ -15,6 +12,7 @@ class Bureaucrat {
 
         const std::string _name;
         int _grade;
+        Bureaucrat();
 
     public:
 
@@ -36,7 +34,6 @@ class Bureaucrat {
             }
         };
 
-        Bureaucrat();
         Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &other);
         Bureaucrat &operator=(const Bureaucrat &other);

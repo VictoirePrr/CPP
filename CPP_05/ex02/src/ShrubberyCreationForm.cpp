@@ -1,8 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) {
-    _target = "default target";
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137),  _target("default target"){
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other) {
@@ -41,9 +40,13 @@ void ShrubberyCreationForm::executeAction() const {
 
 }
 
+std::string ShrubberyCreationForm::getTarget() const {
+    return(_target);
+}
+
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& f) {
-    os << f.getName() << ", ShrubberyCreationForm require grade " << f.getSignGrade() << " to sign and grade " << f.getExecGrade() 
-    << " to execute it. The ShrubberyCreationForm is currently : " << (f.isSigned() ? "Signed." : "Not signed.");
+    os << f.getName() << " ( " << f.getTarget() << " ) " << ", require grade " << f.getSignGrade() << " to sign and grade " << f.getExecGrade() 
+    << " to execute it. It is currently : " << (f.isSigned() ? "Signed." : "Not signed.");
     return (os);
 }

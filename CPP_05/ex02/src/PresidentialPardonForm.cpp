@@ -1,7 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5) {
-    _target = "default target";
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default target") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other) {
@@ -26,11 +25,15 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
 }
 
 void PresidentialPardonForm::executeAction() const {
-    std::cout << _target << "has been pardoned by Zaphod Beeblebrox." << std::endl;
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
+
+std::string PresidentialPardonForm::getTarget() const {
+    return(_target);
 }
 
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& f) {
-    os << f.getName() << ", PresidentialPardonForm require grade " << f.getSignGrade() << " to sign and grade " << f.getExecGrade() 
-    << " to execute it. The PresidentialPardonForm is currently : " << (f.isSigned() ? "Signed." : "Not signed.");
+    os << f.getName() << " ( " << f.getTarget() << " ) " << ", require grade " << f.getSignGrade() << " to sign and grade " << f.getExecGrade() 
+    << " to execute it. It is currently : " << (f.isSigned() ? "Signed." : "Not signed.");
     return (os);
 }

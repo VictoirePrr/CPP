@@ -3,11 +3,11 @@
 
 AForm::AForm() : _name("AForm A"), _signed(false), 
 _signGrade(10), _execGrade(75) {
-
 }
 
 AForm::AForm(const std::string name, const int signGrade, const int execGrade) 
 : _name(name), _signGrade(signGrade), _execGrade(execGrade) {
+    _signed = false;
     if (_signGrade > 150 || _execGrade > 150)
         throw GradeTooLowException();
     if (_signGrade < 1 || _execGrade < 1)
@@ -66,12 +66,12 @@ bool AForm::beSigned(Bureaucrat const &b) {
 
 bool AForm::execute(Bureaucrat const &executor) const {
     if (!isSigned()) {
-        FormNotSignedException();
+        throw FormNotSignedException();
         return(false);
     }
 
     if (executor.getGrade() > getExecGrade()) {
-        GradeTooLowException();
+        throw GradeTooLowException();
         return(false);
     }
     executeAction();

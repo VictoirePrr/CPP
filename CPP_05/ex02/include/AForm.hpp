@@ -13,6 +13,7 @@ class AForm {
         bool _signed;
         const int _signGrade;
         const int _execGrade;
+        AForm();
 
     public :
 
@@ -21,23 +22,22 @@ class AForm {
             virtual const char* what() const throw() {
                 return ("Form is not signed !");
             }
-    };
+        };
 
         class GradeTooHighException : public std::exception {
         public :
             virtual const char* what() const throw() {
                 return ("Grade Too High !");
             }
-    };
+        };
 
-    class GradeTooLowException : public std::exception {
-        public :
-            virtual const char* what() const throw() {
-                return ("Grade Too Low !");
-            }
-    };
+        class GradeTooLowException : public std::exception {
+            public :
+                virtual const char* what() const throw() {
+                    return ("Grade Too Low !");
+                }
+        };
 
-        AForm();
         AForm(const AForm& other);
         AForm& operator=(const AForm& other);
         virtual ~AForm();

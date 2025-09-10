@@ -1,44 +1,68 @@
+#include <iostream>
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-
+#include "Colors.hpp"
 
 int main() {
     try {
-        Bureaucrat boss("Alice", 1);
-        Bureaucrat intern("Bob", 150);
+        std::cout << BM << "---- Creating Bureaucrats ----" << RESET << std::endl;
+        Bureaucrat alice("Alice", 1);   // top grade
+        Bureaucrat bob("Bob", 50);      // medium grade
+        Bureaucrat tom("Tom", 150);     // lowest grade
 
-        ShrubberyCreationForm shrub("garden");
-        RobotomyRequestForm robot("Bender");
-        PresidentialPardonForm pardon("Marvin");
+        std::cout << alice << std::endl;
+        std::cout << bob << std::endl;
+        std::cout << tom << std::endl;
 
-        std::cout << "\n--- Intern tries to sign forms ---" << std::endl;
-        intern.signForm(shrub);
-        intern.signForm(robot);
-        intern.signForm(pardon);
+        std::cout << BM << "\n---- Creating Forms ----" << RESET << std::endl;
+        ShrubberyCreationForm shrub("Home");
+        RobotomyRequestForm robo("BMarvin");
+        PresidentialPardonForm pardon("Arthur Dent");
 
-        std::cout << "\n--- Boss signs all forms ---" << std::endl;
-        boss.signForm(shrub);
-        boss.signForm(robot);
-        boss.signForm(pardon);
+        std::cout << shrub << std::endl;
+        std::cout << robo << std::endl;
+        std::cout << pardon << std::endl;
 
-        std::cout << "\n--- Intern tries to execute forms ---" << std::endl;
-        intern.executeForm(shrub);
-        intern.executeForm(robot);
-        intern.executeForm(pardon);
+        std::cout << BM << "\n---- Testing signing ----" << RESET << std::endl;
+        std::cout << R; tom.signForm(shrub);   // should fail
+        std::cout << G; bob.signForm(shrub); // should succeed
+        std::cout << G; alice.signForm(robo);// should succeed
+        std::cout << G; alice.signForm(pardon);// should succeed
+        std::cout << RESET;
 
-        std::cout << "\n--- Boss executes forms ---" << std::endl;
-        boss.executeForm(shrub);
-        boss.executeForm(robot);
-        boss.executeForm(pardon);
+        std::cout << BM << "\n---- Executing forms ----" << RESET << std::endl;
+        std::cout << R; tom.executeForm(shrub);    // should fail
+        std::cout << G; bob.executeForm(shrub);  // should succeed, create file
+        std::cout << R; bob.executeForm(robo);     // grade too low
+        std::cout << G; alice.executeForm(robo); // should succeed, 50% chance
+        std::cout << G; alice.executeForm(pardon);// should succeed
+        std::cout << RESET;
 
-    } catch (std::exception &e) {
-        std::cout << "Exception caught: " << e.what() << std::endl;
+        std::cout << BM << "\n---- Checking Forms ----" << RESET << std::endl;
+        std::cout << shrub << std::endl;
+        std::cout << robo << std::endl;
+        std::cout << pardon << std::endl;
+
+
+        std::cout << BM << "\n---- Polymorphism test ----" << RESET << std::endl;
+        AForm* forms[3] = {
+            new ShrubberyCreationForm("Garden"),
+            new RobotomyRequestForm("Bender"),
+            new PresidentialPardonForm("Ford Prefect")
+        };
+
+        for (int i = 0; i < 3; i++) {
+            std::cout << G << "\n[Form " << i+1 << "]" << RESET << std::endl;
+            alice.signForm(*forms[i]);
+            alice.executeForm(*forms[i]);
+            delete forms[i];
+        }
+
+    } catch (std::exception& e) {
+        std::cerr << R << "Exception caught: " << e.what() << RESET << std::endl;
     }
+
     return 0;
 }
-
-
-
