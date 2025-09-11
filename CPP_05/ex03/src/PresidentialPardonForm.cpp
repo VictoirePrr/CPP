@@ -6,14 +6,14 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:23 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:15:25 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/11 13:28:42 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default target") {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("presidential pardon", 25, 5), _target("default target") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other) {
@@ -33,7 +33,7 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("presidential pardon", 25, 5), _target(target) {
 
 }
 

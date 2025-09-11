@@ -6,12 +6,11 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:54:10 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 11:54:28 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/11 12:13:37 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#pragma once
 
 #include <iostream>
 #include <exception>
@@ -59,4 +58,3 @@ class Bureaucrat
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
-#endif

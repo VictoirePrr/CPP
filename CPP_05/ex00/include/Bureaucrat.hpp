@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 12:11:46 by victoire          #+#    #+#             */
+/*   Updated: 2025/09/11 12:13:50 by victoire         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#pragma once
 
 #include <iostream>
 #include <exception>
@@ -46,4 +56,3 @@ class Bureaucrat {
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
-#endif

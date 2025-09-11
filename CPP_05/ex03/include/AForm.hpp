@@ -6,12 +6,11 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:02 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:16:04 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/11 13:26:09 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#pragma once
 
 #include <iostream>
 
@@ -69,4 +68,3 @@ class AForm {
 
 std::ostream& operator<<(std::ostream& os, const AForm& f);
 
-#endif 

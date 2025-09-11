@@ -6,13 +6,11 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:21 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:16:23 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/11 12:18:04 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef ShrubberyCreationForm_HPP
-#define ShrubberyCreationForm_HPP
+#pragma once
 
 #include "AForm.hpp"
 #include <fstream>
@@ -37,4 +35,3 @@ class ShrubberyCreationForm : public AForm {
 
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& f);
 
-#endif
