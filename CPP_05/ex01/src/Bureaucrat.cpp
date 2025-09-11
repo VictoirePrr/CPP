@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 11:53:53 by victoire          #+#    #+#             */
+/*   Updated: 2025/09/11 11:53:56 by victoire         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
@@ -48,7 +60,7 @@ void Bureaucrat::decrementGrade() {
 void Bureaucrat::signForm(Form &f) {
 
     try {
-        if (f.beSigned(this))
+        if (f.beSigned(*this))
             std::cout << getName() << " signed " << f.getName() << std::endl;
 
     }

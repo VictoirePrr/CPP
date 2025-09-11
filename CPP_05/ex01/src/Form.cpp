@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 11:53:44 by victoire          #+#    #+#             */
+/*   Updated: 2025/09/11 11:53:46 by victoire         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
@@ -52,9 +65,9 @@ int Form::getExecGrade() const {
     return(_execGrade);
 }
 
-bool Form::beSigned(Bureaucrat *b) {
+bool Form::beSigned(Bureaucrat const &b) {
 
-    if (b->getGrade() <= getSignGrade())
+    if (b.getGrade() <= getSignGrade())
     {
         _signed = true;
     }

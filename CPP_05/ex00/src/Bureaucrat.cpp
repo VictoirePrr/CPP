@@ -1,7 +1,6 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Bureaucrat Vic"), _grade(75) {
-    // do I put a random grade here ? do I make it impossible to instantiate without grade ?
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name),  _grade (other._grade) {

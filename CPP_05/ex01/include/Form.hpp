@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/11 11:54:01 by victoire          #+#    #+#             */
+/*   Updated: 2025/09/11 11:54:03 by victoire         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FORM_HPP
 #define FORM_HPP
 
@@ -11,6 +23,7 @@ class Form {
         bool _signed;
         const int _signGrade;
         const int _execGrade;
+        Form();
 
     public :
 
@@ -28,7 +41,6 @@ class Form {
             }
     };
 
-        Form();
         Form(const Form& other);
         Form& operator=(const Form& other);
         ~Form();
@@ -39,7 +51,7 @@ class Form {
         bool isSigned() const;
         int getSignGrade() const;
         int getExecGrade() const;
-        bool beSigned(Bureaucrat *b);
+        bool beSigned(Bureaucrat const &b);
 
 };
 
