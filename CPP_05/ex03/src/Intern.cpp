@@ -40,14 +40,20 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget) {
     }
     
     switch (i) {
-        case President :
-            return(new PresidentialPardonForm(formTarget));
+        case President : {
+                std::cout << "Intern creates Presidential Pardon Form"  << std::endl;
+                return(new PresidentialPardonForm(formTarget));
+            }
 
-        case Robotomy: 
+        case Robotomy: {
+            std::cout << "Intern creates Robotomy Request Form"  << std::endl;
             return(new RobotomyRequestForm(formTarget));
+        }
 
-        case Shrubbery:
+        case Shrubbery: {
+            std::cout << "Intern creates Shrubbery Creation Form"  << std::endl;
             return(new ShrubberyCreationForm(formTarget));
+        }
 
         default:
             throw FormNameDoesntExist();

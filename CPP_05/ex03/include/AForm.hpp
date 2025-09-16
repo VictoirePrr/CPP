@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:02 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 13:26:09 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/16 12:47:49 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ class AForm {
         bool beSigned(Bureaucrat const &b);
         bool execute(Bureaucrat const &executor) const;
 
+        virtual std::string getTarget() const = 0;
         virtual void executeAction() const = 0; 
 
 };

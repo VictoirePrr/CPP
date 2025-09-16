@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:32 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:15:34 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/16 12:45:26 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,26 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 }
 
 void ShrubberyCreationForm::executeAction() const {
-    std::string outputFilename =  _target + ".replace";
+    std::string outputFilename =  _target + "_shrubbery";
     std::ofstream outputFile(outputFilename.c_str());
     if (!outputFile.is_open()) {
         std::cout << "Failed to open the output file." << std::endl;
         return;
     }
-    outputFile << "   *\n";
-    outputFile << "  /|\\\n";
-    outputFile << " / | \\\n";
-    outputFile << "   |\n";
-    outputFile << "  / \\\n";
+    outputFile << "                *\n";
+    outputFile << "               /|\\\n";
+    outputFile << "              //|\\\\\n";
+    outputFile << "             ///|\\\\\\\n";
+    outputFile << "            ////|\\\\\\\\\n";
+    outputFile << "           /////|\\\\\\\\\\\n";
+    outputFile << "          //////|\\\\\\\\\\\\\n";
+    outputFile << "         ///////|\\\\\\\\\\\\\\\n";
+    outputFile << "        ////////|\\\\\\\\\\\\\\\\\n";
+    outputFile << "               |||\n";
+    outputFile << "               |||\n";
+    outputFile << "            ___|||___\n";
+    outputFile << "           /   | |   \\\n";
+    outputFile << "          /____|_|____\\\n";
     outputFile.close();
 
 }
