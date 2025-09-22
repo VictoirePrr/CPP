@@ -42,6 +42,15 @@ int main()
         }
     }
     std::cout << vic << std::endl;
-    
+
+    std::cout << RED << "==== Copy constructor test w/ vic ==== " << RESET << std::endl;
+    Bureaucrat b(vic);
+    std::cout << b << std::endl;
+
+    std::cout << RED << "==== Assignment operator test w/ vic ==== " << RESET << std::endl;
+    Bureaucrat c;
+
+    c = vic;
+    std::cout << c << std::endl;
     return (0);
 }
