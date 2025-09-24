@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/23 16:50:04 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 15:50:46 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,92 +31,88 @@ ScalarConverter::~ScalarConverter() {
 }
 
 
-bool stringToIntAndChar(const std::string& s, int& result) {
-    std::stringstream ss(s);
-    ss >> result;
+bool ScalarConverter::handleSpecialString(const std::string& s) {
+    if (s == "nan" || s == "nanf" || s == "-inf" || s == "+inf" || s == "inf" 
+        || s == "inff" || s == "+inff" || s == "-inff") {
 
-    if (ss.fail()) {
-        std::cout << "char : impossible\nint : impossible" << std::endl;
-        return false;
+        std::cout << "char : impossible" << std::endl;
+        std::cout << "int : : impossible" << std::endl;
+        std::cout << "float : " << ((s == "nan" || s == "nanf") ? "nanf" 
+        : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inff" 
+        : (s == "-inf" || s == "-inff") ? "-inff"
+        : "") << std::endl;
+        std::cout << "double : " << ((s == "nan" || s == "nanf") ? "nan" 
+        : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inf" 
+        : (s == "-inf" || s == "-inff") ? "-inf"
+        : "") << std::endl;
+        
+        return(true);
     }
+    return(false);
+}
+
+void ScalarConverter::doubleToChar(double& result) {
     
-    char nextChar = ss.peek();
-    if (nextChar != EOF && nextChar != '.') {
-        std::cout << "char : impossible\nint : impossible" << std::endl;
-        return false;
-    }
-    
-    if (result > 127 || result < 0)
-            std::cout << "char : impossible" << std::endl;
-    else if ((result >= 0 && result <= 32 ) || result == 127)
-            std::cout << "char : Non displayable " << std::endl;
+    if (result >= CHAR_MAX || result <= CHAR_MIN)
+        std::cout << "char : impossible" << std::endl;
+    else if ((static_cast<char>(result) >= 0 && static_cast<char>(result) <= 32 ) 
+    || static_cast<char>(result) == 127)
+        std::cout << "char : Non displayable " << std::endl;
     else
         std::cout << "char : " << static_cast<char>(result) << std::endl;
-    std::cout << "int : " << result << std::endl;
-    return true;
 }
 
-bool stringToFloat(const std::string& s, float& result) {
+void ScalarConverter::doubleToInt(double& result) {
+    if (result >= INT_MAX || result <= INT_MIN)
+        std::cout << "int : impossible" << std::endl;
+    else
+        std::cout << "int : " << static_cast<int>(result) << std::endl;
+}
+
+
+bool ScalarConverter::stringToDouble(const std::string& s, double& result) {
+    
     std::stringstream ss(s);
     ss >> result;
 
     if (ss.fail()) {
-        std::cout << "float : impossible" << std::endl;
         return false;
     }
 
     char nextChar = ss.peek();
     if (nextChar != EOF && nextChar != 'f') {
-        std::cout << "float : impossible" << std::endl;
-        return false;
-    }
-
-     if (std::isnan(result)) {
-        std::cout << "float : nan" << std::endl;
-    } else if (std::isinf(result)) {
-        if (std::signbit(result))
-            std::cout << "float : -inf" << std::endl;
-        else
-            std::cout << "float : +inf" << std::endl;
-    } else
-    std::cout << "float : " << result << "f" << std::endl;
-    return true;
-}
-
-bool stringToDouble(const std::string& s, double& result) {
-    std::stringstream ss(s);
-    ss >> result;
-
-    if (ss.fail()) {
-        std::cout << "double : impossible" << std::endl;
-        return false;
-    }
-
-    char nextChar = ss.peek();
-    if (nextChar != EOF && nextChar != 'f') {
-        std::cout << "double : impossible" << std::endl;
         return false;
     }
     
-    if (std::isnan(result)) {
-        std::cout << "double : nan" << std::endl;
-    } else if (std::isinf(result)) {
+    if (std::isnan(result))
+        handleSpecialString("nan");
+    else if (std::isinf(result)) {
         if (std::signbit(result))
-            std::cout << "double : -inf" << std::endl;
+            handleSpecialString("-inf");
         else
-            std::cout << "double : +inf" << std::endl;
-    } else
-    std::cout << "double : " << std::fixed << std::setprecision(1) << result << std::endl;
+            handleSpecialString("+inf");
+        } 
+    else {
+        doubleToChar(result);
+        doubleToInt(result);
+        std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(result) << "f" << std::endl;
+        std::cout << "double : " << std::fixed << std::setprecision(1) << result << std::endl;
+    }
+        
     return true;
 }
 
 void ScalarConverter::convert(std::string &s) {
 
-        int num;
-        stringToIntAndChar(s, num);
-        float fnum;
-        stringToFloat(s, fnum);
-        double value;
-         stringToDouble(s, value);
+    double value;
+    if (handleSpecialString(s))
+        return ;
+    if (stringToDouble(s, value) == false) {
+        throw ImpossibleConversion();
+    }
 
+}
+
+const char* ScalarConverter::ImpossibleConversion::what() const throw() {
+	return "char : impossible\nint : : impossible\nfloat : impossible\ndouble : impossible";
 }

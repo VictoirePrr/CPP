@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:39:54 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/23 13:54:38 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 15:33:11 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int main(int argc, char **argv) {
         return (0);
     }
     std::string argStr(argv[1]);
-    ScalarConverter::convert(argStr);
+    try {
+        ScalarConverter::convert(argStr);
+    }
+    catch (std::exception& e) {
+         std::cout << e.what() << std::endl; 
+    }
     return (0);
 }
