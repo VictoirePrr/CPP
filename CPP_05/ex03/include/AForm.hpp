@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:16:02 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/16 12:47:49 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:31:48 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,19 @@ class AForm {
     public :
 
         class FormNotSignedException : public std::exception {
-        public :
-            virtual const char* what() const throw() {
-                return ("Form is not signed !");
-            }
-        };
+				public:
+					const char *what() const throw();
+			};
 
-        class GradeTooHighException : public std::exception {
-        public :
-            virtual const char* what() const throw() {
-                return ("Grade Too High !");
-            }
-        };
-
-        class GradeTooLowException : public std::exception {
-            public :
-                virtual const char* what() const throw() {
-                    return ("Grade Too Low !");
-                }
-        };
+	    class GradeTooHighException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
+			
+		class GradeTooLowException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
 
         AForm(const AForm& other);
         AForm& operator=(const AForm& other);

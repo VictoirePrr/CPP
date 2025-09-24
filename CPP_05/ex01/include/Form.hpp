@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:54:01 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/22 10:29:42 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:29:00 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,15 @@ class Form {
 
     public :
 
-            class GradeTooHighException : public std::exception {
-            public :
-                virtual const char* what() const throw() {
-                    return ("Grade Too High !");
-                }
-        };
-
-        class GradeTooLowException : public std::exception {
-            public :
-                virtual const char* what() const throw() {
-                    return ("Grade Too Low !");
-                }
-        };
+	    class GradeTooHighException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
+			
+		class GradeTooLowException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
 
         Form(const Form& other);
         Form& operator=(const Form& other);

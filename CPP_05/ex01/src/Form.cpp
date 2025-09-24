@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:53:44 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 11:53:46 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:28:35 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-
-Form::Form() : _name("Form A"), _signed(false), 
-_signGrade(10), _execGrade(75) {
-
-}
 
 Form::Form(const std::string name, const int signGrade, const int execGrade) 
 : _name(name), _signGrade(signGrade), _execGrade(execGrade) {
@@ -68,11 +63,17 @@ int Form::getExecGrade() const {
 bool Form::beSigned(Bureaucrat const &b) {
 
     if (b.getGrade() <= getSignGrade())
-    {
         _signed = true;
-    }
     else
         throw GradeTooLowException();
     return (_signed);
 
+}
+
+const char* Form::GradeTooHighException::what() const throw () {
+	return "Grade is too hight";
+}
+
+const char* Form::GradeTooLowException::what() const throw () {
+	return "Grade is too low";
 }

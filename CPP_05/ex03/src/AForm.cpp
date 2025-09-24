@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:55 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/16 12:28:25 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:32:08 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,16 @@ bool AForm::execute(Bureaucrat const &executor) const {
     }
     executeAction();
     return (true);
+}
+
+const char* AForm::GradeTooHighException::what() const throw () {
+	return "Form grade too Hight";
+}
+
+const char* AForm::GradeTooLowException::what() const throw () {
+	return "Form grade too Low";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "Form not signed";
 }

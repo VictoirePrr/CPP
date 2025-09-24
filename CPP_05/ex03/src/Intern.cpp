@@ -60,3 +60,7 @@ AForm *Intern::makeForm(std::string formName, std::string formTarget) {
             break;
     }
 }
+
+const char* Intern::FormNameDoesntExist::what() const throw() {
+	return "Form doesn't exist !";
+}

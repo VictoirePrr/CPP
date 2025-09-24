@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:54:10 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:13:37 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:27:53 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,22 @@ class Bureaucrat
 {
 
     private:
+    
         const std::string _name;
         int _grade;
         Bureaucrat();
 
     public:
-        class GradeTooHighException : public std::exception
-        {
-        public:
-            virtual const char *what() const throw()
-            {
-                return ("Grade Too High !");
-            }
-        };
+    
+        class GradeTooHighException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
 
-        class GradeTooLowException : public std::exception
-        {
-        public:
-            virtual const char *what() const throw()
-            {
-                return ("Grade Too Low !");
-            }
-        };
+		class GradeTooLowException : public std::exception {
+				public:
+					const char *what() const throw();
+			};
 
         Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat &other);

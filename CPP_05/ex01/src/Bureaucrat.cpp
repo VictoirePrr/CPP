@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 11:53:53 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 11:53:56 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:28:04 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Bureaucrat Vic"), _grade(75) {
-    
-}
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name),  _grade (other._grade) {
 }
@@ -74,3 +71,10 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
     return (os);
 }
 
+const char* Bureaucrat::GradeTooHighException::what() const throw () {
+	return "Grade is too hight";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw () {
+	return "Grade is too low";	
+}

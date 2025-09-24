@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 12:49:23 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/16 12:49:26 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:11:05 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void title(const std::string& txt, const char* color) {
 }
 
 int main() {
+    srand(time(NULL));
     try {
         Bureaucrat boss("Boss", 1);
         Bureaucrat low("Low", 150);

@@ -10,9 +10,7 @@ class Intern {
 
             class FormNameDoesntExist : public std::exception {
                 public :
-                    virtual const char* what() const throw() {
-                return ("Form doesn't exist !");
-                }
+                    const char* what() const throw();
             };
 
             Intern();

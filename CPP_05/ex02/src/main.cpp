@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:15:12 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/11 12:15:15 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/09/24 11:07:16 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "Colors.hpp"
 
 int main() {
+    srand(time(NULL));
     try {
         std::cout << BM << "---- Creating Bureaucrats ----" << RESET << std::endl;
         Bureaucrat alice("Alice", 1);   // top grade
