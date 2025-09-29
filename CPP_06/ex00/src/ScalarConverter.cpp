@@ -6,7 +6,7 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/09/24 15:50:46 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/09/29 12:36:22 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,19 @@ void ScalarConverter::convert(std::string &s) {
     double value;
     if (handleSpecialString(s))
         return ;
+        //findtypeliteral(std::string &value)
+        // {
+        //    size_t pos = value.find('.');
+    //     if (pos != std::string::npos) {
+    //          size_t pos = value.find('f');
+    //       if (pos != std::string::npos)
+    //                 std::string type = float;
+    //        else
+    //             std::string type = double;
+    //}
+    
+    // else
+    //     std::cout << "Letter not found." << std::endl;
     if (stringToDouble(s, value) == false) {
         throw ImpossibleConversion();
     }
