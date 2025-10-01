@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 13:39:54 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 19:06:27 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/01 19:09:34 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
     original.text = "Hello World !";
     original.value = 57.42;
 
-    std::cout << "=== Original Data ===" << std::endl;
+    std::cout << BM << "=== Original Data ===" << RESET << std::endl;
     std::cout << "Address: " << &original << std::endl;
     std::cout << "lenght: " << original.lenght << std::endl;
     std::cout << "text: " << original.text << std::endl;
@@ -30,7 +30,7 @@ int main() {
 
     Data* restored = Serializer::deserialize(raw);
 
-    std::cout << "\n=== Restored Data ===" << std::endl;
+    std::cout << BM << "\n=== Restored Data ===" << RESET << std::endl;
     std::cout << "Address: " << restored << std::endl;
     std::cout << "lenght: " << restored->lenght << std::endl;
     std::cout << "text: " << restored->text << std::endl;
