@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 17:03:12 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/01 18:09:49 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,22 @@ bool ScalarConverter::ssCheck(std::stringstream &ss) {
     return true;
 }
 
-bool ScalarConverter::handleSpecialString(const std::string &s)
-{
-    if (s == "nan" || s == "nanf" || s == "-inf" || s == "+inf" || s == "inf" || s == "inff" || s == "+inff" || s == "-inff")
-    {
+bool ScalarConverter::handleSpecialString(const std::string &s) {
+    if (s == "nan" || s == "nanf" || s == "-inf" || s == "+inf" 
+        || s == "inf" || s == "inff" || s == "+inff" || s == "-inff") {
 
         std::cout << "char : impossible" << std::endl;
         std::cout << "int : : impossible" << std::endl;
-        std::cout << "float : " << ((s == "nan" || s == "nanf") ? "nanf" : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inff"
-                                                                       : (s == "-inf" || s == "-inff")                                ? "-inff"
-                                                                                                                                      : "")
-                  << std::endl;
-        std::cout << "double : " << ((s == "nan" || s == "nanf") ? "nan" : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inf"
-                                                                       : (s == "-inf" || s == "-inff")                                ? "-inf"
-                                                                                                                                      : "")
-                  << std::endl;
+        std::cout << "float : " << ((s == "nan" || s == "nanf") ? "nanf" 
+        : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inff"                                            
+        : (s == "-inf" || s == "-inff") ? "-inff"
+        : "")
+            << std::endl;
+        std::cout << "double : " << ((s == "nan" || s == "nanf") ? "nan" 
+        : (s == "inf" || s == "+inf" || s == "inff" || s == "+inff") ? "+inf"
+        : (s == "-inf" || s == "-inff") ? "-inf"
+         : "")
+            << std::endl;
 
         return (true);
     }
@@ -66,6 +67,7 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
         convertToInt(s, false);
         convertToFloat(s, false);
         convertToDouble(s, false);
+        return true;
     }
     double result;
     
@@ -112,6 +114,8 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
+    if (!isdigit(s[0]))
+        std::cout << "int : " << static_cast<int>(s[0]) << std::endl;
     int result;
 
     std::stringstream ss(s);
@@ -145,6 +149,8 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 
+    if (!isdigit(s[0]))
+        std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(s[0]) << "f" << std::endl;
     float result;
 
     std::stringstream ss(s);
@@ -177,6 +183,10 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToDouble(const std::string &s, bool print) {
 
+
+    if (!isdigit(s[0]))
+        std::cout << "double : " << std::fixed << std::setprecision(1) << static_cast<double>(s[0]) << std::endl;
+        
     double result;
     
     std::stringstream ss(s);
