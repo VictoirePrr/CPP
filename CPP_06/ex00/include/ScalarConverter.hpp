@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:04 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 13:33:16 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/01 15:25:13 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <cstdio>
 #include <cmath>
 #include <climits>
+#include "Colors.hpp"
 
 class ScalarConverter {
 

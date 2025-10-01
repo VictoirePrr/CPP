@@ -6,7 +6,7 @@
 /*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 13:37:34 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/01 17:03:12 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool ScalarConverter::ssCheck(std::stringstream &ss) {
         return false;
     }
     char nextChar = ss.peek();
-    if (nextChar != EOF && nextChar != 'f') {
+    if (nextChar != EOF && nextChar != 'f' && nextChar != '.') {
         return false;
     }
     return true;
@@ -61,11 +61,17 @@ bool ScalarConverter::handleSpecialString(const std::string &s)
 
 bool ScalarConverter::convertToChar(const std::string &s, bool print) {
 
-    char result;
-
+    if (!isdigit(s[0])) {
+        std::cout << "char : " << static_cast<char>(s[0]) << std::endl;
+        convertToInt(s, false);
+        convertToFloat(s, false);
+        convertToDouble(s, false);
+    }
+    double result;
+    
     std::stringstream ss(s);
     ss >> result;
-
+    
     if (ssCheck(ss) == false)
         return (false);
 
@@ -79,22 +85,21 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
         else
             std::cout << "char : impossible" << std::endl;
     }
-    else if ((static_cast<char>(result) >= 0 && static_cast<char>(result) <= 32) 
-    || static_cast<char>(result) == 127) {
+    else if ((static_cast<char>(result) >= 0 && static_cast<char>(result) <= 32) || (static_cast<char>(result) == 127)) {
          if (print) {
-            std::cout << "char : Non displayable " << std::endl;
+            std::cout << "char : Non displayable" << std::endl;
             convertToInt(s, false);
             convertToFloat(s, false);
             convertToDouble(s, false);
         }
         else
-            std::cout << "char : Non displayable " << std::endl;
+            std::cout << "char : Non displayable" << std::endl;
         
     }
     
     else {
         if (print) {
-            std::cout << "char : " << static_cast<char>(result) << std::endl;
+            std::cout << "char print : " << static_cast<char>(result) << std::endl;
             convertToInt(s, false);
             convertToFloat(s, false);
             convertToDouble(s, false);
@@ -112,9 +117,6 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
     std::stringstream ss(s);
     ss >> result;
 
-    if (ssCheck(ss) == false)
-        return (false);
-
     if (result >= INT_MAX || result <= INT_MIN) {
         if (print)  {
             convertToChar(s, false);
@@ -125,7 +127,8 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
         else
             std::cout << "int : impossible" << std::endl;
     }
-    
+    if (ssCheck(ss) == false)
+        return (false);
     else {
         if (print) {
             convertToChar(s, false);
@@ -133,8 +136,9 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
             convertToFloat(s, false);
             convertToDouble(s, false);
         }
-        else
-            std::cout << "int : " << static_cast<int>(result) << std::endl;
+        else {
+              std::cout << "int : " << static_cast<int>(result) << std::endl;
+        }
     }
     return true;
 }
@@ -174,6 +178,7 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 bool ScalarConverter::convertToDouble(const std::string &s, bool print) {
 
     double result;
+    
     std::stringstream ss(s);
     ss >> result;
 
@@ -212,7 +217,6 @@ void ScalarConverter::convert(std::string &s) {
         return ;
 
     std::string type = findLiteralType(s);
-    
     if (type.empty())
         throw ImpossibleConversion();
 
@@ -231,6 +235,7 @@ void ScalarConverter::convert(std::string &s) {
         case Float: convertToFloat(s, true);
             break;
         case Double: convertToDouble(s, true);
+            break;
         default:
             throw ImpossibleConversion();
             break;
@@ -239,36 +244,47 @@ void ScalarConverter::convert(std::string &s) {
 
 std::string ScalarConverter::findLiteralType(std::string &value) {
 
-    for (int i = 0; value[i]; i++){
-        if (!std::isprint(value[i]))
-            return (NULL);
+    if (value.empty())
+        return "";
+
+    if (value.size() == 1 && !std::isdigit(static_cast<unsigned char>(value[0])))
+        return "Char";
+
+    size_t i = 0;
+    if (value[i] == '+' || value[i] == '-')
+        i++;
+
+    bool hasDot = false;
+    bool hasF = false;
+    bool hasDigit = false;
+
+    for (; i < value.size(); i++) {
+        char c = value[i];
+        if (std::isdigit(static_cast<unsigned char>(c))) {
+            hasDigit = true;
+        } else if (c == '.') {
+            if (hasDot)
+                return "";
+            hasDot = true;
+        } else if ((c == 'f' || c == 'F') && i == value.size() - 1) {
+            hasF = true;
+        } else {
+            return "";
+        }
     }
 
-    for (int i = 0; value[i]; i++) {
-        if (!std::isalpha(value[i]))
-            break;
-        if (i == value.length())
-            ;
-        return ("Char");
-    }
+    if (!hasDigit)
+        return "";
+    if (hasDot && hasF)
+        return "Float";
+    else if (hasDot)
+        return "Double";
+    else if (!hasDot && !hasF)
+        return "Int";
 
-    for (int i = 0; value[i]; i++) {
-        if (!std::isdigit(value[i]))
-            return (NULL);
-    }
-
-    size_t pos = value.find('.');
-    if (pos != std::string::npos)
-        size_t pos = value.find('f');
-    else
-        return ("Int");
-
-    if (pos != std::string::npos)
-        return ("Float");
-    else
-        return ("Double");
+    return "";
 }
 
 const char *ScalarConverter::ImpossibleConversion::what() const throw() {
-    return "char : impossible\nint : : impossible\nfloat : impossible\ndouble : impossible";
+    return "char : impossible\nint : impossible\nfloat : impossible\ndouble : impossible";
 }
