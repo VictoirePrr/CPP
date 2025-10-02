@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/09/23 13:46:53 by victoire         ###   ########lyon.fr    #
+#    Updated: 2025/10/02 11:29:24 by vicperri         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = convert
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -MMD
 SRCDIR      = src
 SRC         = main.cpp \
               ScalarConverter.cpp \

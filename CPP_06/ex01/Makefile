@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/10/01 18:24:05 by victoire         ###   ########lyon.fr    #
+#    Updated: 2025/10/02 11:29:30 by vicperri         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = serialize
 CXX         = c++
-CXXFLAGS    = -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD
+CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -MMD
 SRCDIR      = src
 SRC         = main.cpp \
               Serializer.cpp \

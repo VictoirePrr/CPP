@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 18:09:49 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/02 11:50:05 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool ScalarConverter::ssCheck(std::stringstream &ss) {
         return false;
     }
     char nextChar = ss.peek();
-    if (nextChar != EOF && nextChar != 'f' && nextChar != '.') {
+    if (nextChar != EOF && nextChar != 'f' && nextChar != 'F' && nextChar != '.') {
         return false;
     }
     return true;
@@ -69,6 +69,7 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
         convertToDouble(s, false);
         return true;
     }
+    
     double result;
     
     std::stringstream ss(s);
@@ -87,7 +88,8 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
         else
             std::cout << "char : impossible" << std::endl;
     }
-    else if ((static_cast<char>(result) >= 0 && static_cast<char>(result) <= 32) || (static_cast<char>(result) == 127)) {
+    else if ((static_cast<char>(result) >= 0 && static_cast<char>(result) <= 32) 
+    || (static_cast<char>(result) == 127)) {
          if (print) {
             std::cout << "char : Non displayable" << std::endl;
             convertToInt(s, false);
@@ -114,8 +116,11 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
-    if (!isdigit(s[0]))
+    if (!isdigit(s[0])) {
         std::cout << "int : " << static_cast<int>(s[0]) << std::endl;
+        return (true);
+    }
+    
     int result;
 
     std::stringstream ss(s);
@@ -149,15 +154,16 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 
-    if (!isdigit(s[0]))
-        std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(s[0]) << "f" << std::endl;
+    if (!isdigit(s[0])) {
+        std::cout << "float : " << std::fixed << std::setprecision(1)
+         << static_cast<float>(s[0]) << "f" << std::endl;
+         return (true);
+    }
+    
     float result;
 
     std::stringstream ss(s);
     ss >> result;
-
-    if (ssCheck(ss) == false)
-        return (false);
 
     if (std::isnan(result))
         handleSpecialString("nan");
@@ -167,6 +173,20 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
         else
             handleSpecialString("+inf");
     }
+    
+    if (result >= FLT_MAX || result <= FLT_MIN) {
+        if (print)  {
+            convertToChar(s, false);
+            convertToInt(s, false);
+            std::cout << "float : impossible" << std::endl;
+            convertToDouble(s, false);
+        }
+        else
+            std::cout << "float : impossible" << std::endl;
+    }
+
+    if (ssCheck(ss) == false)
+        return (false);
     
     else {
         if (print) {
@@ -184,9 +204,12 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 bool ScalarConverter::convertToDouble(const std::string &s, bool print) {
 
 
-    if (!isdigit(s[0]))
-        std::cout << "double : " << std::fixed << std::setprecision(1) << static_cast<double>(s[0]) << std::endl;
-        
+    if (!isdigit(s[0])) {
+        std::cout << "double : " << std::fixed << std::setprecision(1) 
+        << static_cast<double>(s[0]) << std::endl;
+        return (true);
+    }
+    
     double result;
     
     std::stringstream ss(s);

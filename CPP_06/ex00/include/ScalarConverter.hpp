@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:04 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/01 15:25:13 by victoire         ###   ########lyon.fr   */
+/*   Updated: 2025/10/02 11:39:40 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <cstdio>
 #include <cmath>
 #include <climits>
+#include <float.h>
 #include "Colors.hpp"
 
 class ScalarConverter {
