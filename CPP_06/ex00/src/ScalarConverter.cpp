@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:11 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/02 11:50:05 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/10/06 10:05:54 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ bool ScalarConverter::handleSpecialString(const std::string &s) {
 
 bool ScalarConverter::convertToChar(const std::string &s, bool print) {
 
-    if (!isdigit(s[0])) {
+    if (!isdigit(s[0]) && s[0] != '+' && s[0] != '-') {
         std::cout << "char : " << static_cast<char>(s[0]) << std::endl;
         convertToInt(s, false);
         convertToFloat(s, false);
@@ -78,7 +78,7 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
     if (ssCheck(ss) == false)
         return (false);
 
-    if (result >= CHAR_MAX || result <= CHAR_MIN) {
+    if (result >= CHAR_MAX || result <= CHAR_MIN || result < 0) {
         if (print) {
             std::cout << "char : impossible" << std::endl;
             convertToInt(s, false);
@@ -116,9 +116,8 @@ bool ScalarConverter::convertToChar(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
-    if (!isdigit(s[0])) {
+    if (!isdigit(s[0]) && s[0] != '+' && s[0] != '-') {
         std::cout << "int : " << static_cast<int>(s[0]) << std::endl;
-        return (true);
     }
     
     int result;
@@ -154,10 +153,9 @@ bool ScalarConverter::convertToInt(const std::string &s, bool print) {
 
 bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 
-    if (!isdigit(s[0])) {
+    if (!isdigit(s[0]) && s[0] != '+' && s[0] != '-') {
         std::cout << "float : " << std::fixed << std::setprecision(1)
          << static_cast<float>(s[0]) << "f" << std::endl;
-         return (true);
     }
     
     float result;
@@ -174,7 +172,10 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
             handleSpecialString("+inf");
     }
     
-    if (result >= FLT_MAX || result <= FLT_MIN) {
+    if (ssCheck(ss) == false)
+        return (false);
+
+    if (result >= FLT_MAX || result < -FLT_MAX) {
         if (print)  {
             convertToChar(s, false);
             convertToInt(s, false);
@@ -184,9 +185,6 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
         else
             std::cout << "float : impossible" << std::endl;
     }
-
-    if (ssCheck(ss) == false)
-        return (false);
     
     else {
         if (print) {
@@ -204,10 +202,9 @@ bool ScalarConverter::convertToFloat(const std::string &s, bool print) {
 bool ScalarConverter::convertToDouble(const std::string &s, bool print) {
 
 
-    if (!isdigit(s[0])) {
+    if (!isdigit(s[0]) && s[0] != '+' && s[0] != '-') {
         std::cout << "double : " << std::fixed << std::setprecision(1) 
         << static_cast<double>(s[0]) << std::endl;
-        return (true);
     }
     
     double result;
