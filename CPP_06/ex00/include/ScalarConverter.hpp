@@ -6,14 +6,13 @@
 /*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 16:46:04 by victoire          #+#    #+#             */
-/*   Updated: 2025/10/02 11:39:40 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/10/07 10:24:59 by vicperri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <string>
 #include <sstream>
 #include <iomanip>
 #include <cstdio>

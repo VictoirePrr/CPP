@@ -4,7 +4,7 @@
 #include <iostream>
 
 struct Data {
-    int lenght;
+    int length;
     std::string text;
     double value;
 };
