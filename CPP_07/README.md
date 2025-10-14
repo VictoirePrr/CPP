@@ -125,7 +125,11 @@ int main  {
 }
 ```
 
-...WIP...
+### <span style="color:#5DADE2;">a. Class templates</span>
+
+
+
+
 
 ## <span style="color:#007BFF; font-weight:bold;">V. Sources</span>
 

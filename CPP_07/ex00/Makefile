@@ -3,19 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/10/07 12:10:57 by vicperri         ###   ########lyon.fr    #
+#    Updated: 2025/10/14 11:49:01 by victoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = base
+NAME        = whatever
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -MMD
 SRCDIR      = src
 SRC         = main.cpp \
-              Whatever.cpp \
 
 SRCS        = $(addprefix $(SRCDIR)/, $(SRC))
 

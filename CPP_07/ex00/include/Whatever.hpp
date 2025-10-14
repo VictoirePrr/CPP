@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:00:38 by vicperri          #+#    #+#             */
-/*   Updated: 2025/10/07 12:28:58 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/10/14 11:48:45 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ class Whatever {
 
     private :
     
-        Whatever();
+        Whatever() {}
 
     public :
     
-        Whatever(const Whatever &other);
-        Whatever &operator=(const Whatever &other);
-        ~Whatever();
+        Whatever(const Whatever &other) {}
+        Whatever &operator=(const Whatever &other) {}
+        ~Whatever() {}
         
         template <typename T> static void swap(T &a, T &b) {
             T temp = a;

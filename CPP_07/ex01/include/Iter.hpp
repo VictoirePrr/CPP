@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 12:00:38 by vicperri          #+#    #+#             */
-/*   Updated: 2025/10/07 15:23:59 by vicperri         ###   ########lyon.fr   */
+/*   Updated: 2025/10/14 11:46:32 by victoire         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,27 @@
 #include <iostream>
 #include <string>
 
-class Iter {
-
-    private :
-    
-        Iter();
-
-    public :
-    
-        Iter(const Iter &other);
-        Iter &operator=(const Iter &other);
-        ~Iter();
         
-        template <typename A, typename L, typename F>
-        static void iter(A *array, const L &lenght, F func) {
-            for (L i = 0; i < lenght; i++)
+        template <typename T>
+        void iter(T *array, const int &length, void (*func)(T&)) {
+            if (length <= 0 || !array || !func)
+                return ;
+            for (int i = 0; i < length; i++)
                 func(array[i]);
         }
 
-        // template <typename A, typename L, typename F>
-        // static void iter(A &array, L &lenght, const F &func) {
-        //      for (L i = 0; i < lenght; i++)
-        //         func(array[i]);
-        // }
+        template <typename T>
+        void iter(const T *array, const int &length, void (*func)(const T&)) {
+            if (length <= 0 || !array || !func)
+                return ;
+            for (int i = 0; i < length; i++)
+                func(array[i]);
+        }
         
-};
 
-template <typename T>
-void printArray(T &array) {
-    std::cout << array << std::endl;
-}
+        template <typename T>
+        void printArray(T &element) {
+            std::cout << element << std::endl;
+        }
 
 #endif
