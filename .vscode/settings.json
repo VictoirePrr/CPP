@@ -51,6 +51,7 @@
         "sstream": "cpp",
         "ranges": "cpp",
         "climits": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "list": "cpp"
     }
 }
