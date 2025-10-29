@@ -53,3 +53,13 @@ int Span::longestSpan() {
     int maxDiff = maxVal - minVal;
     return maxDiff;
 }
+
+void Span::addRange(typename std::vector<int>::iterator begin, typename std::vector<int>::iterator end) {
+
+    std::ptrdiff_t rangeSize = std::distance(begin, end);
+    if (_vector.size() >= _N || rangeSize + _vector.size() > _N)
+        throw std::out_of_range("_vector size limit exceeded !");
+    else
+        _vector.insert(_vector.end(), begin, end);
+
+}

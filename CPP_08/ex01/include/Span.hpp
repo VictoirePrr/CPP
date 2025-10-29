@@ -5,6 +5,9 @@
 #include <vector>
 #include <algorithm>
 #include <climits>
+#include <cstdlib>
+#include <ctime>
+#include "Colors.hpp"
 
 class Span {
 
@@ -22,7 +25,7 @@ class Span {
         ~Span();
 
         void addNumber(unsigned int num);
-        void addRange();
+        void addRange(typename std::vector<int>::iterator begin, typename std::vector<int>::iterator end);
         int shortestSpan();
         int longestSpan();
 };
