@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vicperri <vicperri@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/10/28 14:12:04 by vicperri         ###   ########lyon.fr    #
+#    Updated: 2025/10/30 14:58:38 by victoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = easyfind
+NAME        = span
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -MMD
 SRCDIR      = src
