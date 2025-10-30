@@ -13,5 +13,8 @@
 #define BG "\033[1;32m"
 #define BB "\033[1;34m"
 #define BM "\033[1;35m"
+#define BC  "\033[1;36m"
+#define BY "\033[1;33m"
+
 
 #endif
