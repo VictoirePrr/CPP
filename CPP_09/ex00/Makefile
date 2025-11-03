@@ -6,15 +6,15 @@
 #    By: victoire <victoire@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 15:49:14 by victoire          #+#    #+#              #
-#    Updated: 2025/10/30 14:59:50 by victoire         ###   ########lyon.fr    #
+#    Updated: 2025/11/03 13:28:06 by victoire         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = bitcoin
+NAME        = btc
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -MMD
 SRCDIR      = src
-SRC         = main.cpp \
+SRC         = main.cpp BitcoinExchange.cpp\
 
 SRCS        = $(addprefix $(SRCDIR)/, $(SRC))
 
