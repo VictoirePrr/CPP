@@ -34,19 +34,21 @@ void RPN::parseExpr(char c) {
 
 void RPN::polishOp(std::string expr) {
 
+    _res = 0;
+
     for (size_t i = 0; i < expr.length(); i++) {
         if(!isdigit(expr[i]) && expr[i] != ' ') {
             findOp(expr[i]);
             std::cout << _op << std::endl;
             while (!_compute.empty()) {
                 _res = _compute.top();
-                std::cout << _res << std::endl;
                 _compute.pop();
+                //add an if statement for seg fault
                 doOp(_op[0], _compute.top());
 
             }
-            std::cout << _res << std::endl;
             _compute.pop();
+            std::cout << "res in polishOp : " << _res << std::endl;
             _compute.push(_res);
 
         }
@@ -73,6 +75,8 @@ void RPN::findOp(char c) {
 }
 
 void RPN::doOp(char op, int &top) {
+    std::cout << "res in doOp : " << _res << std::endl;
+
      switch(op) {
         case '+' : _res += top;
         case '-' : _res -= top;
