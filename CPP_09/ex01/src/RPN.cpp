@@ -4,56 +4,85 @@ RPN::RPN() {
 
 }
 
-// RPN::RPN(const RPN& other) {
+RPN::RPN(const RPN &other) {
+    (void)other;
+}
 
-//     *this = other;
-// }
-
-// RPN& RPN::operator=(const RPN& other) {
-
-//     if (this != &other) {
-//         // copy attributes here
-//     }
-//     return *this;
-// }
+RPN &RPN::operator=(const RPN &other) {
+    if (this != &other)
+    {
+        (void)other;
+    }
+    return *this;
+}
 
 RPN::~RPN() {
 }
 
-void RPN::parseExpr(char c) {
+void RPN::parseExpr(std::string expr) {
 
-    if (c == ' ')
-        return ;
-    if (c >= '0' && c <= '9')
-        return ;
-    findOp(c);
-    if (_op.empty())
-        throw std::invalid_argument("ERROR");
-    return ;
+    int countop = 0;
+    int countnum = 0;
+    if (expr.length() == 1 && isdigit(expr[0]))
+        return;
+    
+    findOp(expr[expr.length() - 1]);
+    if (_op.empty() && expr[expr.length() - 1] != ' ') {
+        throw std::invalid_argument("Error");
+                    return ;
+    }
+
+    for (size_t i = 0; i < expr.length(); i++) {
+            if (expr[i] >= '0' && expr[i] <= '9') {
+                countnum++;
+                i++;
+                if (expr[i] != ' ') {
+                    throw std::invalid_argument("Error");
+                    return ;
+                }
+            }
+
+            if (expr[i] != ' ' && !isalpha(expr[i])) {
+                findOp(expr[i]);
+                if (_op.empty()) {
+                    throw std::invalid_argument("Error");
+                    return ;
+                }
+                countop++;
+            }
+    }
+
+    if (countnum != countop + 1) {
+        throw std::invalid_argument("Error");
+                    return ;
+    }
+    
 }
 
 void RPN::polishOp(std::string expr) {
 
     _res = 0;
 
-    for (size_t i = 0; i < expr.length(); i++) {
+    for (size_t i = 0; i <= expr.length(); i++) {
         if(!isdigit(expr[i]) && expr[i] != ' ') {
+
             findOp(expr[i]);
-            std::cout << _op << std::endl;
-            while (!_compute.empty()) {
+            if (!_compute.empty()) {
                 _res = _compute.top();
                 _compute.pop();
-                //add an if statement for seg fault
-                doOp(_op[0], _compute.top());
 
+                if (!_compute.empty()) {
+                    doOp(_op[0], _compute.top());
+                    _compute.pop();
+                }
             }
-            _compute.pop();
-            std::cout << "res in polishOp : " << _res << std::endl;
             _compute.push(_res);
 
         }
+
         else if (expr[i] == ' ')
             continue;
+
         else {
             _num = expr[i] - '0';
             _compute.push(_num);
@@ -66,23 +95,30 @@ void RPN::polishOp(std::string expr) {
 void RPN::findOp(char c) {
     switch(c) {
         case '+' : _op = '+';
+            break;
         case '-' : _op = '-';
+            break;
         case '/' : _op = '/';
+            break;
         case '*' : _op = '*';
+            break;
         default:
             break;
     }
 }
 
 void RPN::doOp(char op, int &top) {
-    std::cout << "res in doOp : " << _res << std::endl;
 
      switch(op) {
-        case '+' : _res += top;
-        case '-' : _res -= top;
+        case '+' : _res = top + _res;
+            break;
+        case '-' : _res = top - _res;
+            break;
         case '/' : _res /= top;
-        case '*' : _res *= top;
-        default:
+            break;
+        case '*' : _res = top * _res;
+            break;
+        default: 
             break;
     }
 }

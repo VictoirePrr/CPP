@@ -19,11 +19,11 @@ class RPN {
     public:
 
         RPN();
-        // RPN(const RPN& other);
-        // RPN& operator=(const RPN& other);
+        RPN(const RPN& other);
+        RPN& operator=(const RPN& other);
         ~RPN();
 
-        void parseExpr(char c);
+        void parseExpr(std::string expr);
         void polishOp(std::string expr);
         void findOp(char c);
         void doOp(char op, int &top);

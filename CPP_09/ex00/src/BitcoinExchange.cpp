@@ -14,16 +14,17 @@ BitcoinExchange::BitcoinExchange(std::ifstream &file) {
     }
 }
 
-// BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) {
-//     //to do
-// }
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
+    (void)other;
+}
 
-// BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
-//     if (this != &other) {
-//  //to do
-//     }
-//     return *this;
-// }
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
+    if (this != &other)
+    {
+        (void)other;
+    }
+    return *this;
+}
 
 BitcoinExchange::~BitcoinExchange() {
 }

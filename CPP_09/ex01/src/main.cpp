@@ -9,12 +9,9 @@ int main(int argc, char **argv) {
 
     RPN start;
     std::string expr = argv[1];
-    std::cout << expr << std::endl;
 
     try {
-        for (size_t i = 0; i < expr.length(); i++) {
-            start.parseExpr(expr[i]);
-        }
+            start.parseExpr(expr);
     } 
     catch (const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl;

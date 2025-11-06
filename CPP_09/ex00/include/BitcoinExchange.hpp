@@ -26,8 +26,8 @@ class BitcoinExchange {
         public :
 
             BitcoinExchange(std::ifstream &file);
-            // BitcoinExchange(const BitcoinExchange& other);
-            // BitcoinExchange& operator=(const BitcoinExchange& other);
+            BitcoinExchange(const BitcoinExchange& other);
+            BitcoinExchange& operator=(const BitcoinExchange& other);
             ~BitcoinExchange();
 
             double getRate(const std::string& date) const;
