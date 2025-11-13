@@ -2,13 +2,21 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <cerrno>
+#include <climits>
+#include <cstring>
 #include <vector>
+#include <deque>
+#include <set>
+#include <ctime>
 
 class PmergeMe {
 
         private :
 
             std::vector<int> vec;
+            std::deque<int> deq;
 
         public :
 
@@ -17,8 +25,8 @@ class PmergeMe {
             PmergeMe& operator=(const PmergeMe& other);
             ~PmergeMe();
 
-            void parseArgs(std::string &args);
-            void fillCont(std::string &args);
+            int parseArgs(char *args);
+            int checkDuplicates();
             void sortCont();
 
 };
