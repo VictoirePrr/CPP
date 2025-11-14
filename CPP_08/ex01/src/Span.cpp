@@ -54,7 +54,7 @@ int Span::longestSpan() {
     return maxDiff;
 }
 
-void Span::addRange(typename std::vector<int>::iterator begin, typename std::vector<int>::iterator end) {
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
 
     std::ptrdiff_t rangeSize = std::distance(begin, end);
     if (_vector.size() >= _N || rangeSize + _vector.size() > _N)
