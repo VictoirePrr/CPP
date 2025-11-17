@@ -101,25 +101,9 @@ void PmergeMe::vectorPairs(size_t pairSize)
         vecpairs.push_back(leftover);
     else if (!vecpairs.empty() && !leftover.empty())
         vecpairs.push_back(leftover);
-    printPairs();
 }
 
-void PmergeMe::printPairs()
-{
-    std::cout << "Current pairs:\n";
-    for (size_t i = 0; i < vecpairs.size(); ++i)
-    {
-        std::cout << "(";
-        for (size_t j = 0; j < vecpairs[i].size(); ++j)
-        {
-            std::cout << vecpairs[i][j];
-            if (j < vecpairs[i].size() - 1)
-                std::cout << ", ";
-        }
-        std::cout << ")\n";
-    }
-    std::cout << "-------\n";
-}
+
 
 void PmergeMe::swapPairs(std::vector<int> &pair)
 {
@@ -137,4 +121,33 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
             }
         }
     }
+}
+
+void PmergeMe::binarySearch(size_t pairSize) {
+
+    printPairs();
+    std::vector<std::vector<int> > main;
+    std::vector<std::vector<int> > pend;
+    std::vector<int> leftover;
+
+    for (size_t i = 0; i < vecpairs.size(); ++i)  {
+
+        if (i == 0)
+            main.push_back(vecpairs[0]);
+        if( i == 1)
+            main.push_back(vecpairs[1]);
+        else if (vecpairs[i].size() == pairSize)
+            pend.push_back(vecpairs[i]);
+        else
+            leftover = vecpairs[i];
+    }
+    if (!pend.empty()) {
+        //Jacobstahl de tes morts
+    }
+    vecpairs = main;
+    if (!leftover.empty())
+        vecpairs.push_back(leftover);
+
+    pairSize /= 2;
+    binarySearch(pairSize);
 }

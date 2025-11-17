@@ -20,6 +20,7 @@ class PmergeMe {
             std::deque<int> deq;
 
             std::vector<std::vector<int> > vecpairs;
+            std::vector<std::vector<int> > sisterIdx;
 
         public :
 
@@ -31,10 +32,24 @@ class PmergeMe {
             int parseArgs(char *args);
             int checkDuplicates();
             void vectorPairs(size_t pairSize);
-            // void dequePairs();
-            void printPairs();
             void swapPairs(std::vector<int> &pair);
-
+            void binarySearch(size_t pairSize);
+            void printPairs() {
+                    std::cout << "Current pairs:\n";
+                    for (size_t i = 0; i < vecpairs.size(); ++i)
+                    {
+                        std::cout << "(";
+                        for (size_t j = 0; j < vecpairs[i].size(); ++j)
+                        {
+                            std::cout << vecpairs[i][j];
+                            if (j < vecpairs[i].size() - 1)
+                                std::cout << ", ";
+                        }
+                        std::cout << ")\n";
+                    }
+                    std::cout << "-------\n";
+                }
+                // void dequePairs();
 };
 
 #endif // PMERGEME_HPP
