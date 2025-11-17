@@ -2,6 +2,7 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <algorithm> 
 #include <cstdlib>
 #include <cerrno>
 #include <climits>
@@ -18,6 +19,8 @@ class PmergeMe {
             std::vector<int> vec;
             std::deque<int> deq;
 
+            std::vector<std::vector<int> > vecpairs;
+
         public :
 
             PmergeMe();
@@ -27,7 +30,10 @@ class PmergeMe {
 
             int parseArgs(char *args);
             int checkDuplicates();
-            void sortCont();
+            void vectorPairs(size_t pairSize);
+            // void dequePairs();
+            void printPairs();
+            void swapPairs(std::vector<int> &pair);
 
 };
 

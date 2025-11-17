@@ -3,6 +3,7 @@
 int main(int argc, char **argv) 
 {
     PmergeMe start;
+    size_t pairSize = 1;
 
     if (argc == 2){
             std::cout << "Error" << std::endl;
@@ -23,6 +24,8 @@ int main(int argc, char **argv)
     // clock_t start = clock();
     // clock_t end = clock();
     // double elapsed = double(end - start) / CLOCKS_PER_SEC;
+    start.vectorPairs(pairSize);
+
     return (0);
 
 }
