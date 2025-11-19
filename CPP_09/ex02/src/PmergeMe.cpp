@@ -60,8 +60,10 @@ void PmergeMe::vectorPairs(size_t pairSize)
     printPairs();
     pairSize *= 2;
 
-    if (pairSize > vec.size() / 2)
+    if (pairSize > vec.size() / 2) {
+        vecSize = pairSize;
         return;
+    }
 
     std::vector<std::vector<int> > newPairs;
     std::vector<int> leftover;
@@ -101,6 +103,8 @@ void PmergeMe::vectorPairs(size_t pairSize)
         vecpairs.push_back(leftover);
     else if (!vecpairs.empty() && !leftover.empty())
         vecpairs.push_back(leftover);
+    pairSize = vecSize;
+    
 }
 
 
@@ -126,28 +130,61 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
 void PmergeMe::binarySearch(size_t pairSize) {
 
     printPairs();
+    std::cout << pairSize << std::endl;
     std::vector<std::vector<int> > main;
     std::vector<std::vector<int> > pend;
+
+    if (vecSize == 1)
+        return;
+
+    vecSize /= 2;
+    std::vector<std::vector<int> > newPairs;
     std::vector<int> leftover;
 
+    for (size_t i = 0; i < vecpairs.size(); ++i) {
+        const std::vector<int>& group = vecpairs[i];
+        size_t fullGroups = group.size() / vecSize;
+        size_t takeCount = fullGroups * vecSize;
+
+        // Break group into smaller pairs of size vecSize
+        for (size_t j = 0; j + vecSize <= takeCount; j += vecSize) {
+            std::vector<int> newPair(group.begin() + j, group.begin() + j + vecSize);
+            newPairs.push_back(newPair);
+        }
+        // Record leftovers if present (not a complete pair)
+        if (takeCount < group.size()) {
+            leftover.insert(leftover.end(), group.begin() + takeCount, group.end());
+        }
+    }
+
+    // Save new pairs as vecpairs
+    vecpairs = newPairs;
+
+    // If there's leftover, add as its own group at the end
+    printPairs();
     for (size_t i = 0; i < vecpairs.size(); ++i)  {
 
-        if (i == 0)
+        if (i == 0) {
             main.push_back(vecpairs[0]);
-        if( i == 1)
+            continue;
+        }
+        if(i == 1) {
             main.push_back(vecpairs[1]);
-        else if (vecpairs[i].size() == pairSize)
+            continue;
+        }
+        else if (vecpairs[i].size() == vecSize && i % 2 == 0)
             pend.push_back(vecpairs[i]);
-        else
-            leftover = vecpairs[i];
+        else if (vecpairs[i].size() == vecSize && i % 2 != 0)
+            main.push_back(vecpairs[i]);
     }
+    printMain(main);
+    printPend(pend);
     if (!pend.empty()) {
         //Jacobstahl de tes morts
     }
     vecpairs = main;
+
     if (!leftover.empty())
         vecpairs.push_back(leftover);
-
-    pairSize /= 2;
-    binarySearch(pairSize);
+    binarySearch(vecSize);
 }

@@ -17,10 +17,12 @@ class PmergeMe {
         private :
 
             std::vector<int> vec;
+            size_t vecSize;
             std::deque<int> deq;
 
             std::vector<std::vector<int> > vecpairs;
             std::vector<std::vector<int> > sisterIdx;
+
 
         public :
 
@@ -35,7 +37,7 @@ class PmergeMe {
             void swapPairs(std::vector<int> &pair);
             void binarySearch(size_t pairSize);
             void printPairs() {
-                    std::cout << "Current pairs:\n";
+                    std::cout << "Current vecpairs:\n";
                     for (size_t i = 0; i < vecpairs.size(); ++i)
                     {
                         std::cout << "(";
@@ -43,6 +45,36 @@ class PmergeMe {
                         {
                             std::cout << vecpairs[i][j];
                             if (j < vecpairs[i].size() - 1)
+                                std::cout << ", ";
+                        }
+                        std::cout << ")\n";
+                    }
+                    std::cout << "-------\n";
+                }
+            void printMain(std::vector<std::vector<int> >main) {
+                    std::cout << "Current main:\n";
+                    for (size_t i = 0; i < main.size(); ++i)
+                    {
+                        std::cout << "(";
+                        for (size_t j = 0; j < main[i].size(); ++j)
+                        {
+                            std::cout << main[i][j];
+                            if (j < main[i].size() - 1)
+                                std::cout << ", ";
+                        }
+                        std::cout << ")\n";
+                    }
+                    std::cout << "-------\n";
+                }
+                void printPend(std::vector<std::vector<int> > pend) {
+                    std::cout << "Current pend:\n";
+                    for (size_t i = 0; i < pend.size(); ++i)
+                    {
+                        std::cout << "(";
+                        for (size_t j = 0; j < pend[i].size(); ++j)
+                        {
+                            std::cout << pend[i][j];
+                            if (j < pend[i].size() - 1)
                                 std::cout << ", ";
                         }
                         std::cout << ")\n";
