@@ -21,7 +21,7 @@ class PmergeMe {
             std::deque<int> deq;
 
             std::vector<std::vector<int> > vecpairs;
-            std::vector<std::vector<int> > sisterIdx;
+            std::vector<int> sisterIdx;
 
 
         public :
@@ -35,6 +35,8 @@ class PmergeMe {
             int checkDuplicates();
             void vectorPairs(size_t pairSize);
             void swapPairs(std::vector<int> &pair);
+            std::vector<int> dividePairs();
+            void findSisterIdx(std::vector<std::vector<int> > main);
             void binarySearch(size_t pairSize);
             void printPairs() {
                     std::cout << "Current vecpairs:\n";

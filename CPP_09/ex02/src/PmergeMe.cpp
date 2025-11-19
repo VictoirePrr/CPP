@@ -28,17 +28,11 @@ int PmergeMe::parseArgs(char *args)
 
     long num = std::strtol(args, &endptr, 10);
     if (endptr == args)
-    {
         return (1);
-    }
     else if (*endptr != '\0')
-    {
         return (1);
-    }
     if (num < 0 || num >= INT_MAX || errno == ERANGE)
-    {
         return (1);
-    }
 
     vec.push_back(static_cast<int>(num));
     deq.push_back(static_cast<int>(num));
@@ -113,16 +107,12 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
 {
 
     int half = pair.size() / 2;
-    for (size_t i = 0; i < pair.size(); i++)
-    {
-        if (i + 1 == pair.size())
-        {
+    for (size_t i = 0; i < pair.size(); i++) {
+        if (i + 1 == pair.size()) {
             int &b = pair[i / 2];
             int &a = pair[i];
             if (b > a)
-            {
                 std::swap_ranges(pair.begin(), pair.begin() + half, pair.begin() + half);
-            }
         }
     }
 }
@@ -131,36 +121,17 @@ void PmergeMe::binarySearch(size_t pairSize) {
 
     printPairs();
     std::cout << pairSize << std::endl;
+    
     std::vector<std::vector<int> > main;
     std::vector<std::vector<int> > pend;
+     std::vector<int> leftover;
 
     if (vecSize == 1)
         return;
 
     vecSize /= 2;
-    std::vector<std::vector<int> > newPairs;
-    std::vector<int> leftover;
-
-    for (size_t i = 0; i < vecpairs.size(); ++i) {
-        const std::vector<int>& group = vecpairs[i];
-        size_t fullGroups = group.size() / vecSize;
-        size_t takeCount = fullGroups * vecSize;
-
-        // Break group into smaller pairs of size vecSize
-        for (size_t j = 0; j + vecSize <= takeCount; j += vecSize) {
-            std::vector<int> newPair(group.begin() + j, group.begin() + j + vecSize);
-            newPairs.push_back(newPair);
-        }
-        // Record leftovers if present (not a complete pair)
-        if (takeCount < group.size()) {
-            leftover.insert(leftover.end(), group.begin() + takeCount, group.end());
-        }
-    }
-
-    // Save new pairs as vecpairs
-    vecpairs = newPairs;
-
-    // If there's leftover, add as its own group at the end
+   
+    leftover = dividePairs();
     printPairs();
     for (size_t i = 0; i < vecpairs.size(); ++i)  {
 
@@ -174,12 +145,15 @@ void PmergeMe::binarySearch(size_t pairSize) {
         }
         else if (vecpairs[i].size() == vecSize && i % 2 == 0)
             pend.push_back(vecpairs[i]);
-        else if (vecpairs[i].size() == vecSize && i % 2 != 0)
+        else if (vecpairs[i].size() == vecSize && i % 2 != 0) {
             main.push_back(vecpairs[i]);
+        }
     }
+    findSisterIdx(main);
     printMain(main);
     printPend(pend);
     if (!pend.empty()) {
+        //std::lower_bound
         //Jacobstahl de tes morts
     }
     vecpairs = main;
@@ -187,4 +161,40 @@ void PmergeMe::binarySearch(size_t pairSize) {
     if (!leftover.empty())
         vecpairs.push_back(leftover);
     binarySearch(vecSize);
+}
+
+
+void PmergeMe::findSisterIdx(std::vector<std::vector<int> > main) {
+    size_t idx = 0;
+
+    for (size_t i = 0; i < main.size(); ++i) {
+        if (i != 0 || i != 1) {
+            sisterIdx[idx] = i;
+            idx++;
+        }
+    }
+}
+
+std::vector<int> PmergeMe::dividePairs() {
+
+    std::vector<std::vector<int> > newPairs;
+    std::vector<int> leftover;
+
+    for (size_t i = 0; i < vecpairs.size(); ++i) {
+        const std::vector<int>& group = vecpairs[i];
+        size_t fullGroups = group.size() / vecSize;
+        size_t takeCount = fullGroups * vecSize;
+
+        for (size_t j = 0; j + vecSize <= takeCount; j += vecSize) {
+            std::vector<int> newPair(group.begin() + j, group.begin() + j + vecSize);
+            newPairs.push_back(newPair);
+        }
+        if (takeCount < group.size()) {
+            leftover.insert(leftover.end(), group.begin() + takeCount, group.end());
+        }
+    }
+
+    // Save new pairs as vecpairs
+    vecpairs = newPairs;
+    return (leftover);
 }
