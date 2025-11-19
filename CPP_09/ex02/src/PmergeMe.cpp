@@ -118,7 +118,6 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
 void PmergeMe::binarySearch() {
 
     printPairs();
-    std::cout << "vecSize : " << vecSize << std::endl; 
     
     std::vector<std::vector<int> > main;
     std::vector<std::vector<int> > pend;
@@ -155,41 +154,45 @@ void PmergeMe::binarySearch() {
 
         size_t indexOfB = getJacobstahlNum(pend.size());
         std::cout << indexOfB << std::endl;
-        if (indexOfB == 0)
-            continue;
+        // if (indexOfB == 0)
+        //     continue;
          size_t rangeMax = getSisterIdx(indexOfB) - 1; //excluding the sis
             if (rangeMax > main.size())
                 rangeMax = main.size();
             size_t bNum = pend[indexOfB][pend[indexOfB].size()];
             for(size_t i = 0; i <= rangeMax; i++) {
             size_t aNum = main[i][main[i].size()];
-                if(bNum > aNum) {
+                if(bNum < aNum) {
                     main.insert(main.begin() + i, pend[indexOfB]);
+                    pend.erase(pend.begin() + indexOfB);
                     std::vector<int>::iterator it = std::find(sisterIdx.begin(), sisterIdx.end(), rangeMax+1);
                     if ( it != sisterIdx.end())
                         *it++;
                 }
             }
         }
-        // for (size_t i = pend.size(); i > 0; i--) {
+    }
+     if (!pend.empty()) {
+            for (size_t i = pend.size(); i > 0; i--) {
 
-        //     size_t indexOfB = getNonJacobstahlNum(pend.size(), i);
-        //     if (indexOfB == 0)
-        //         continue;
-        //     size_t rangeMax = getSisterIdx(indexOfB) - 1; //excluding the sis
-        //     if (rangeMax > main.size())
-        //         rangeMax = main.size();
-        //     size_t bNum = pend[indexOfB][pend[indexOfB].size()];
-        //     for(size_t i = 0; i <= rangeMax; i++) {
-        //     size_t aNum = main[i][main[i].size()];
-        //         if(bNum > aNum) {
-        //             main.insert(main.begin() + i, pend[indexOfB]);
-        //             std::vector<int>::iterator it = std::find(sisterIdx.begin(), sisterIdx.end(), rangeMax+1);
-        //             if ( it != sisterIdx.end())
-        //                 *it++;
-        //         }
-        //     }
-        // }
+                size_t indexOfB = getNonJacobstahlNum(pend.size(), i);
+                if (indexOfB == 0)
+                    continue;
+                size_t rangeMax = getSisterIdx(indexOfB) - 1; //excluding the sis
+                if (rangeMax > main.size())
+                    rangeMax = main.size();
+                size_t bNum = pend[indexOfB][pend[indexOfB].size()];
+                for(size_t i = 0; i <= rangeMax; i++) {
+                size_t aNum = main[i][main[i].size()];
+                    if(bNum > aNum) {
+                        main.insert(main.begin() + i, pend[indexOfB]);
+                         pend.erase(pend.begin() + indexOfB);
+                        std::vector<int>::iterator it = std::find(sisterIdx.begin(), sisterIdx.end(), rangeMax+1);
+                        if ( it != sisterIdx.end())
+                            *it++;
+                    }
+                }
+            }
     }
     vecpairs = main;
 
@@ -204,12 +207,12 @@ size_t PmergeMe::getSisterIdx(size_t indexOfB) {
 
 std::vector<int> PmergeMe::setJacobsthal(size_t arraySize) {
     std::vector<int> jacob(arraySize);
-    jacob[0] = 1;
+    jacob[0] = 0;
     if (arraySize > 1) {
         jacob[1] = 1;
+        jacob[2] = 3;
         for (size_t i = 2; i < arraySize; ++i) {
             jacob[i] = jacob[i-1] + 2 * jacob[i-2];
-            std::cout << jacob[i] << std::endl;
         }
     }
     return jacob;
