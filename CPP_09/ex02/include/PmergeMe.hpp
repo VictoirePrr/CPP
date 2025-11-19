@@ -36,8 +36,12 @@ class PmergeMe {
             void vectorPairs(size_t pairSize);
             void swapPairs(std::vector<int> &pair);
             std::vector<int> dividePairs();
-            void findSisterIdx(std::vector<std::vector<int> > main);
-            void binarySearch(size_t pairSize);
+            void setSisterIdx(std::vector<std::vector<int> > main);
+            size_t getSisterIdx(size_t indexOfB);
+            std::vector<int> setJacobsthal(size_t arraySize);
+            size_t getJacobstahlNum(size_t arraySize);
+            size_t getNonJacobstahlNum(size_t arraySize, int idxPend);
+            void binarySearch();
             void printPairs() {
                     std::cout << "Current vecpairs:\n";
                     for (size_t i = 0; i < vecpairs.size(); ++i)

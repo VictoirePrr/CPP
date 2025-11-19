@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     // clock_t end = clock();
     // double elapsed = double(end - start) / CLOCKS_PER_SEC;
     start.vectorPairs(pairSize);
-    start.binarySearch(pairSize);
+    start.binarySearch();
 
     return (0);
 

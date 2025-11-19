@@ -50,8 +50,6 @@ int PmergeMe::checkDuplicates()
 
 void PmergeMe::vectorPairs(size_t pairSize)
 {
-
-    printPairs();
     pairSize *= 2;
 
     if (pairSize > vec.size() / 2) {
@@ -117,14 +115,14 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
     }
 }
 
-void PmergeMe::binarySearch(size_t pairSize) {
+void PmergeMe::binarySearch() {
 
     printPairs();
-    std::cout << pairSize << std::endl;
+    std::cout << "vecSize : " << vecSize << std::endl; 
     
     std::vector<std::vector<int> > main;
     std::vector<std::vector<int> > pend;
-     std::vector<int> leftover;
+    std::vector<int> leftover;
 
     if (vecSize == 1)
         return;
@@ -149,28 +147,105 @@ void PmergeMe::binarySearch(size_t pairSize) {
             main.push_back(vecpairs[i]);
         }
     }
-    findSisterIdx(main);
+    setSisterIdx(main);
     printMain(main);
     printPend(pend);
     if (!pend.empty()) {
-        //std::lower_bound
-        //Jacobstahl de tes morts
+        for (size_t i = 0; i < pend.size(); i++) {
+
+        size_t indexOfB = getJacobstahlNum(pend.size());
+        std::cout << indexOfB << std::endl;
+        if (indexOfB == 0)
+            continue;
+         size_t rangeMax = getSisterIdx(indexOfB) - 1; //excluding the sis
+            if (rangeMax > main.size())
+                rangeMax = main.size();
+            size_t bNum = pend[indexOfB][pend[indexOfB].size()];
+            for(size_t i = 0; i <= rangeMax; i++) {
+            size_t aNum = main[i][main[i].size()];
+                if(bNum > aNum) {
+                    main.insert(main.begin() + i, pend[indexOfB]);
+                    std::vector<int>::iterator it = std::find(sisterIdx.begin(), sisterIdx.end(), rangeMax+1);
+                    if ( it != sisterIdx.end())
+                        *it++;
+                }
+            }
+        }
+        // for (size_t i = pend.size(); i > 0; i--) {
+
+        //     size_t indexOfB = getNonJacobstahlNum(pend.size(), i);
+        //     if (indexOfB == 0)
+        //         continue;
+        //     size_t rangeMax = getSisterIdx(indexOfB) - 1; //excluding the sis
+        //     if (rangeMax > main.size())
+        //         rangeMax = main.size();
+        //     size_t bNum = pend[indexOfB][pend[indexOfB].size()];
+        //     for(size_t i = 0; i <= rangeMax; i++) {
+        //     size_t aNum = main[i][main[i].size()];
+        //         if(bNum > aNum) {
+        //             main.insert(main.begin() + i, pend[indexOfB]);
+        //             std::vector<int>::iterator it = std::find(sisterIdx.begin(), sisterIdx.end(), rangeMax+1);
+        //             if ( it != sisterIdx.end())
+        //                 *it++;
+        //         }
+        //     }
+        // }
     }
     vecpairs = main;
 
     if (!leftover.empty())
         vecpairs.push_back(leftover);
-    binarySearch(vecSize);
+    binarySearch();
 }
 
+size_t PmergeMe::getSisterIdx(size_t indexOfB) {
+ return sisterIdx[indexOfB];
+}
 
-void PmergeMe::findSisterIdx(std::vector<std::vector<int> > main) {
-    size_t idx = 0;
+std::vector<int> PmergeMe::setJacobsthal(size_t arraySize) {
+    std::vector<int> jacob(arraySize);
+    jacob[0] = 1;
+    if (arraySize > 1) {
+        jacob[1] = 1;
+        for (size_t i = 2; i < arraySize; ++i) {
+            jacob[i] = jacob[i-1] + 2 * jacob[i-2];
+            std::cout << jacob[i] << std::endl;
+        }
+    }
+    return jacob;
+}
 
-    for (size_t i = 0; i < main.size(); ++i) {
-        if (i != 0 || i != 1) {
-            sisterIdx[idx] = i;
-            idx++;
+size_t PmergeMe::getJacobstahlNum(size_t arraySize) {
+
+    std::vector<int> jacob = setJacobsthal(arraySize);
+    for (size_t i = 0; i < jacob.size(); i++) {
+        size_t index = jacob[i];
+        std::cout << "index jacob = " << index << std::endl;
+        if (index < arraySize) {
+            return(index);
+        }
+    }
+    return(0);
+    
+}
+
+size_t PmergeMe::getNonJacobstahlNum(size_t arraySize, int idxPend) {
+
+    std::vector<int> jacob = setJacobsthal(arraySize);
+    std::vector<int>::iterator it = std::lower_bound(jacob.begin(), jacob.end(), idxPend);
+        if (*it != idxPend)
+            return(idxPend);
+        else
+            return(0);
+    
+    
+}
+
+void PmergeMe::setSisterIdx(std::vector<std::vector<int> > main) {
+
+    for (size_t i = 0; i < main.size(); i++) {
+        if (i != 0 && i != 1) {
+            sisterIdx.push_back(i);
         }
     }
 }
