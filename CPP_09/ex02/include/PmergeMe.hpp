@@ -21,7 +21,8 @@ class PmergeMe {
             std::deque<int> deq;
 
             std::vector<std::vector<int> > vecpairs;
-            std::vector<int> sisterIdx;
+            std::vector<std::vector<int> > main;
+            std::vector<std::vector<int> > pend;
 
 
         public :
@@ -36,8 +37,8 @@ class PmergeMe {
             void vectorPairs(size_t pairSize);
             void swapPairs(std::vector<int> &pair);
             std::vector<int> dividePairs();
-            void setSisterIdx(std::vector<std::vector<int> > main);
-            size_t getSisterIdx(size_t indexOfB);
+            void fillMainAndPend();
+
             std::vector<int> setJacobsthal(size_t arraySize);
             size_t getJacobstahlNum(size_t arraySize);
             size_t getNonJacobstahlNum(size_t arraySize, int idxPend);
@@ -89,5 +90,7 @@ class PmergeMe {
                 }
                 // void dequePairs();
 };
+
+            bool comp(const std::vector<int>& a, const std::vector<int>& b);
 
 #endif // PMERGEME_HPP
