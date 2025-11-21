@@ -12,17 +12,25 @@
 #include <set>
 #include <ctime>
 
+#include "Colors.hpp"
+
 class PmergeMe {
 
         private :
 
             std::vector<int> vec;
             size_t vecSize;
-            std::deque<int> deq;
 
             std::vector<std::vector<int> > vecpairs;
-            std::vector<std::vector<int> > main;
-            std::vector<std::vector<int> > pend;
+            std::vector<std::vector<int> > vmain;
+            std::vector<std::vector<int> > vpend;
+
+            std::deque<int> deq;
+            size_t deqSize;
+
+            std::deque<std::deque<int> > deqpairs;
+            std::deque<std::deque<int> > dmain;
+            std::deque<std::deque<int> > dpend;
 
 
         public :
@@ -32,65 +40,39 @@ class PmergeMe {
             PmergeMe& operator=(const PmergeMe& other);
             ~PmergeMe();
 
+            void printBefore(char **argv);
+            void printAfter(std::string container);
+            void printProcess(int argc, double elapsed, std::string container);
+
             int parseArgs(char *args);
             int checkDuplicates();
-            void vectorPairs(size_t pairSize);
-            void swapPairs(std::vector<int> &pair);
-            std::vector<int> dividePairs();
-            void fillMainAndPend();
 
-            std::vector<int> setJacobsthal(size_t arraySize);
-            size_t getJacobstahlNum(size_t arraySize);
-            size_t getNonJacobstahlNum(size_t arraySize, int idxPend);
-            void binarySearch();
-            void printPairs() {
-                    std::cout << "Current vecpairs:\n";
-                    for (size_t i = 0; i < vecpairs.size(); ++i)
-                    {
-                        std::cout << "(";
-                        for (size_t j = 0; j < vecpairs[i].size(); ++j)
-                        {
-                            std::cout << vecpairs[i][j];
-                            if (j < vecpairs[i].size() - 1)
-                                std::cout << ", ";
-                        }
-                        std::cout << ")\n";
-                    }
-                    std::cout << "-------\n";
-                }
-            void printMain(std::vector<std::vector<int> >main) {
-                    std::cout << "Current main:\n";
-                    for (size_t i = 0; i < main.size(); ++i)
-                    {
-                        std::cout << "(";
-                        for (size_t j = 0; j < main[i].size(); ++j)
-                        {
-                            std::cout << main[i][j];
-                            if (j < main[i].size() - 1)
-                                std::cout << ", ";
-                        }
-                        std::cout << ")\n";
-                    }
-                    std::cout << "-------\n";
-                }
-                void printPend(std::vector<std::vector<int> > pend) {
-                    std::cout << "Current pend:\n";
-                    for (size_t i = 0; i < pend.size(); ++i)
-                    {
-                        std::cout << "(";
-                        for (size_t j = 0; j < pend[i].size(); ++j)
-                        {
-                            std::cout << pend[i][j];
-                            if (j < pend[i].size() - 1)
-                                std::cout << ", ";
-                        }
-                        std::cout << ")\n";
-                    }
-                    std::cout << "-------\n";
-                }
-                // void dequePairs();
+ /////////////////////////VECTOR//////////////////////////////////////////////
+
+            void vectorPairs(size_t pairSize);
+            void swapVecPair(std::vector<int> &pair);
+
+            void vecBinarySearch();
+            std::vector<int> divideVecPairs();
+            void fillVecMainAndPend();
+            std::vector<int> setVecJacobsthal(size_t arraySize);
+            size_t getVecJacobstahl(size_t arraySize);
+
+
+/////////////////////////DEQUE//////////////////////////////////////////////
+            
+            void dequePairs(size_t pairSize);
+            void swapDeqPair(std::deque<int> &pair);
+
+            void deqBinarySearch();
+            std::deque<int> divideDeqPairs();
+            void fillDeqMainAndPend();
+            std::deque<int> setDeqJacobsthal(size_t arraySize);
+            size_t getDeqJacobstahl(size_t arraySize);
+
 };
 
-            bool comp(const std::vector<int>& a, const std::vector<int>& b);
+bool VecComp(const std::vector<int>& a, const std::vector<int>& b);
+bool DeqComp(const std::deque<int>& a, const std::deque<int>& b);
 
 #endif // PMERGEME_HPP

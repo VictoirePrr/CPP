@@ -1,28 +1,64 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
-{
+PmergeMe::PmergeMe() {
 }
 
-PmergeMe::PmergeMe(const PmergeMe &other)
-{
+PmergeMe::PmergeMe(const PmergeMe &other) {
     (void)other;
 }
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &other)
-{
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
     if (this != &other)
     {
     }
     return *this;
 }
 
-PmergeMe::~PmergeMe()
-{
+PmergeMe::~PmergeMe(){
 }
 
-int PmergeMe::parseArgs(char *args)
-{
+void PmergeMe::printProcess(int argc, double elapsed, std::string container) {
+    std::cout << "Time to process a range of " << argc << " elements with std::" <<
+    container << " : " << BB << elapsed << " seconds."  << RESET << std::endl;
+}
+
+void PmergeMe::printBefore(char **argv) {
+    std::cout << BR << "Before :" ;
+    for (int i = 1; argv[i]; i++) {
+        std::cout << " " << argv[i] << " " ;
+    }    
+    std::cout << RESET << std::endl;
+}
+
+void PmergeMe::printAfter(std::string container) {
+    std::cout << std::endl;
+    std::cout << BG << "After :" ;
+
+    if (container == "vector") {
+        for (size_t i = 0; i < vecpairs.size(); ++i)
+        {
+            for (size_t j = 0; j < vecpairs[i].size(); ++j)
+            {
+                std::cout << " ";
+                std::cout << vecpairs[i][j];
+            }
+        }
+    }
+
+    if (container == "deque") {
+        for (size_t i = 0; i < vecpairs.size(); ++i)
+        {
+            for (size_t j = 0; j < vecpairs[i].size(); ++j)
+            {
+                std::cout << " ";
+                std::cout << vecpairs[i][j];
+            }
+        }
+    }
+    std::cout << RESET << std::endl;
+}
+
+int PmergeMe::parseArgs(char *args) {
     char *endptr;
     errno = 0;
 
@@ -39,8 +75,7 @@ int PmergeMe::parseArgs(char *args)
     return (0);
 }
 
-int PmergeMe::checkDuplicates()
-{
+int PmergeMe::checkDuplicates() {
 
     std::set<int> s(vec.begin(), vec.end());
     if (s.size() == vec.size())
@@ -48,11 +83,13 @@ int PmergeMe::checkDuplicates()
     return (1);
 }
 
+/////////////////////////VECTOR//////////////////////////////////////////////
+
 void PmergeMe::vectorPairs(size_t pairSize)
 {
     pairSize *= 2;
 
-    if (pairSize > vec.size() / 2) {
+    if (pairSize > vec.size()) {
         vecSize = pairSize;
         return;
     }
@@ -68,7 +105,7 @@ void PmergeMe::vectorPairs(size_t pairSize)
         for (size_t i = 0; i + pairSize <= takeCount; i += pairSize) {
             std::vector<int> pair;
             pair.insert(pair.end(), vec.begin() + i, vec.begin() + i + pairSize);
-            swapPairs(pair);
+            swapVecPair(pair);
             newPairs.push_back(pair);
         }
 
@@ -80,7 +117,7 @@ void PmergeMe::vectorPairs(size_t pairSize)
             std::vector<int> pair;
             pair.insert(pair.end(), vecpairs[i].begin(), vecpairs[i].end());
             pair.insert(pair.end(), vecpairs[i + 1].begin(), vecpairs[i + 1].end());
-            swapPairs(pair);
+            swapVecPair(pair);
             newPairs.push_back(pair);
         }
 
@@ -94,14 +131,12 @@ void PmergeMe::vectorPairs(size_t pairSize)
     if (vecpairs.empty() && !leftover.empty())
         vecpairs.push_back(leftover);
     else if (!vecpairs.empty() && !leftover.empty())
-        vecpairs.push_back(leftover);
-    printPairs();
-    
+        vecpairs.push_back(leftover);  
 }
 
 
 
-void PmergeMe::swapPairs(std::vector<int> &pair)
+void PmergeMe::swapVecPair(std::vector<int> &pair)
 {
 
     int half = pair.size() / 2;
@@ -115,7 +150,7 @@ void PmergeMe::swapPairs(std::vector<int> &pair)
     }
 }
 
-void PmergeMe::binarySearch() {
+void PmergeMe::vecBinarySearch() {
 
     
     std::vector<int> leftover;
@@ -125,58 +160,36 @@ void PmergeMe::binarySearch() {
 
     vecSize /= 2;
    
-    leftover = dividePairs();
-    fillMainAndPend();
+    leftover = divideVecPairs();
+    fillVecMainAndPend();
 
-    printMain(main);
-    printPend(pend);
-    for (size_t i = 0; i < pend.size(); i++) {
+    for (size_t i = 0; i < vpend.size(); i++) {
 
-        while (!pend.empty()) {
-            size_t indexOfB = getJacobstahlNum(pend.size());
+        while (!vpend.empty()) {
+            size_t indexOfB = getVecJacobstahl(vpend.size());
             if (indexOfB == 2)
                 continue;
 
-            std::vector<std::vector<int> >::iterator it = std::lower_bound(main.begin(), main.end(), pend[ indexOfB ], comp);
-            main.insert(it, pend[indexOfB]);
-            pend.erase(pend.begin() + indexOfB);
-
-            std::cout << "------ Main after insertion in 1rs part------" << std::endl;
-            printMain(main);
+            std::vector<std::vector<int> >::iterator it = std::lower_bound(vmain.begin(), vmain.end(), vpend[ indexOfB ], VecComp);
+            vmain.insert(it, vpend[indexOfB]);
+            vpend.erase(vpend.begin() + indexOfB);
         }
     }
-    if (!pend.empty()) {
-        for (size_t i = pend.size(); i > 0; i--) {
-
-                size_t indexOfB = getNonJacobstahlNum(pend.size(), i);
-                std::cout << "Not Jacob : " <<  indexOfB << std::endl;
-                if (indexOfB == 0)
-                    continue;
-    
-                std::vector<std::vector<int> >::iterator it = std::lower_bound(main.begin(), main.end(), pend[ indexOfB ], comp);
-
-                main.insert(it, pend[indexOfB]);
-                pend.erase(pend.begin() + indexOfB);
-
-                std::cout << "------ Main after insertion in 2nd part ------" << std::endl;
-                 printMain(main);
-        }
-    }
-    vecpairs = main;
+    vecpairs = vmain;
 
     if (!leftover.empty())
         vecpairs.push_back(leftover);
-    binarySearch();
+    vecBinarySearch();
 }
 
 
-bool comp(const std::vector<int>& a, const std::vector<int>& b) {
+bool VecComp(const std::vector<int>& a, const std::vector<int>& b) {
         return a.back() < b.back();
 }
 
 
 
-std::vector<int> PmergeMe::setJacobsthal(size_t arraySize) {
+std::vector<int> PmergeMe::setVecJacobsthal(size_t arraySize) {
     std::vector<int> jacob(arraySize);
     jacob[0] = 0;
     if (arraySize > 1) {
@@ -188,9 +201,9 @@ std::vector<int> PmergeMe::setJacobsthal(size_t arraySize) {
     return jacob;
 }
 
-size_t PmergeMe::getJacobstahlNum(size_t arraySize) {
+size_t PmergeMe::getVecJacobstahl(size_t arraySize) {
 
-    std::vector<int> jacob = setJacobsthal(arraySize);
+    std::vector<int> jacob = setVecJacobsthal(arraySize);
     for (size_t i = 0; i < jacob.size(); i++) {
         size_t index = jacob[i];
         if (index < arraySize) {
@@ -198,24 +211,10 @@ size_t PmergeMe::getJacobstahlNum(size_t arraySize) {
         }
     }
     return(2);
-    
-}
-
-size_t PmergeMe::getNonJacobstahlNum(size_t arraySize, int idxPend) {
-std::cout << arraySize << std::endl;
-    // std::vector<int> jacob = setJacobsthal(arraySize);
-    // std::vector<int>::iterator it = std::find(jacob.begin(), jacob.end(), idxPend);
-    //     if (*it != idxPend)
-            return(idxPend);
-        // else
-        //     return(0);
-    
-    
 }
 
 
-
-std::vector<int> PmergeMe::dividePairs() {
+std::vector<int> PmergeMe::divideVecPairs() {
 
     std::vector<std::vector<int> > newPairs;
     std::vector<int> leftover;
@@ -239,24 +238,203 @@ std::vector<int> PmergeMe::dividePairs() {
     return (leftover);
 }
 
-void PmergeMe::fillMainAndPend() {
+void PmergeMe::fillVecMainAndPend() {
 
-    main.clear();
-    pend.clear();
+    vmain.clear();
+    vpend.clear();
     for (size_t i = 0; i < vecpairs.size(); ++i)  {
 
         if (i == 0) {
-            main.push_back(vecpairs[0]);
+            vmain.push_back(vecpairs[0]);
             continue;
         }
         if(i == 1) {
-            main.push_back(vecpairs[1]);
+            vmain.push_back(vecpairs[1]);
             continue;
         }
         else if (vecpairs[i].size() == vecSize && i % 2 == 0)
-            pend.push_back(vecpairs[i]);
+            vpend.push_back(vecpairs[i]);
         else if (vecpairs[i].size() == vecSize && i % 2 != 0) {
-            main.push_back(vecpairs[i]);
+            vmain.push_back(vecpairs[i]);
+        }
+    }
+
+}
+
+///////////////////////////////////////////////////////////////////////
+
+/////////////////////////DEQUE//////////////////////////////////////////////
+
+void PmergeMe::dequePairs(size_t pairSize)
+{
+    pairSize *= 2;
+
+    if (pairSize > deq.size()) {
+        deqSize = pairSize;
+        return;
+    }
+
+    std::deque<std::deque<int> > newPairs;
+    std::deque<int> leftover;
+
+    if (deqpairs.empty()) {
+
+        size_t fullGroups = deq.size() / pairSize;
+        size_t takeCount = fullGroups * pairSize;
+
+        for (size_t i = 0; i + pairSize <= takeCount; i += pairSize) {
+            std::deque<int> pair;
+            pair.insert(pair.end(), deq.begin() + i, deq.begin() + i + pairSize);
+            swapDeqPair(pair);
+            newPairs.push_back(pair);
+        }
+
+        if (takeCount < deq.size())
+            leftover.insert(leftover.end(), deq.begin() + takeCount, deq.end());
+    } else {
+
+        for (size_t i = 0; i + 2 <= deqpairs.size(); i += 2) {
+            std::deque<int> pair;
+            pair.insert(pair.end(), deqpairs[i].begin(), deqpairs[i].end());
+            pair.insert(pair.end(), deqpairs[i + 1].begin(), deqpairs[i + 1].end());
+            swapDeqPair(pair);
+            newPairs.push_back(pair);
+        }
+
+        if (deqpairs.size() % 2 != 0)
+            leftover = deqpairs.back();
+    }
+
+    deqpairs = newPairs;
+    dequePairs(pairSize);
+
+    if (deqpairs.empty() && !leftover.empty())
+        deqpairs.push_back(leftover);
+    else if (!deqpairs.empty() && !leftover.empty())
+        deqpairs.push_back(leftover);  
+}
+
+
+
+void PmergeMe::swapDeqPair(std::deque<int> &pair)
+{
+
+    int half = pair.size() / 2;
+    for (size_t i = 0; i < pair.size(); i++) {
+        if (i + 1 == pair.size()) {
+            int &b = pair[i / 2];
+            int &a = pair[i];
+            if (b > a)
+                std::swap_ranges(pair.begin(), pair.begin() + half, pair.begin() + half);
+        }
+    }
+}
+
+void PmergeMe::deqBinarySearch() {
+
+    
+    std::deque<int> leftover;
+
+    if (deqSize == 1)
+        return;
+
+    deqSize /= 2;
+   
+    leftover = divideDeqPairs();
+    fillDeqMainAndPend();
+
+    for (size_t i = 0; i < dpend.size(); i++) {
+
+        while (!dpend.empty()) {
+            size_t indexOfB = getDeqJacobstahl(dpend.size());
+            if (indexOfB == 2)
+                continue;
+
+            std::deque<std::deque<int> >::iterator it = std::lower_bound(dmain.begin(), dmain.end(), dpend[ indexOfB ], DeqComp);
+            dmain.insert(it, dpend[indexOfB]);
+            dpend.erase(dpend.begin() + indexOfB);
+        }
+    }
+    deqpairs = dmain;
+
+    if (!leftover.empty())
+        deqpairs.push_back(leftover);
+    vecBinarySearch();
+}
+
+
+bool DeqComp(const std::deque<int>& a, const std::deque<int>& b) {
+        return a.back() < b.back();
+}
+
+
+
+std::deque<int> PmergeMe::setDeqJacobsthal(size_t arraySize) {
+    std::deque<int> jacob(arraySize);
+    jacob[0] = 0;
+    if (arraySize > 1) {
+        jacob[1] = 1;
+        for (size_t i = 2; i < arraySize; ++i) {
+            jacob[i] = jacob[i-1] + 2 * jacob[i-2];
+        }
+    }
+    return jacob;
+}
+
+size_t PmergeMe::getDeqJacobstahl(size_t arraySize) {
+
+    std::deque<int> jacob = setDeqJacobsthal(arraySize);
+    for (size_t i = 0; i < jacob.size(); i++) {
+        size_t index = jacob[i];
+        if (index < arraySize) {
+            return(index);
+        }
+    }
+    return(2);
+}
+
+
+std::deque<int> PmergeMe::divideDeqPairs() {
+
+    std::deque<std::deque<int> > newPairs;
+    std::deque<int> leftover;
+
+    for (size_t i = 0; i < deqpairs.size(); ++i) {
+        const std::deque<int>& group = deqpairs[i];
+        size_t fullGroups = group.size() / deqSize;
+        size_t takeCount = fullGroups * deqSize;
+
+        for (size_t j = 0; j + deqSize <= takeCount; j += deqSize) {
+            std::deque<int> newPair(group.begin() + j, group.begin() + j + deqSize);
+            newPairs.push_back(newPair);
+        }
+        if (takeCount < group.size()) {
+            leftover.insert(leftover.end(), group.begin() + takeCount, group.end());
+        }
+    }
+
+    deqpairs = newPairs;
+    return (leftover);
+}
+
+void PmergeMe::fillDeqMainAndPend() {
+
+    dmain.clear();
+    dpend.clear();
+    for (size_t i = 0; i < deqpairs.size(); ++i)  {
+
+        if (i == 0) {
+            dmain.push_back(deqpairs[0]);
+            continue;
+        }
+        if(i == 1) {
+            dmain.push_back(deqpairs[1]);
+            continue;
+        }
+        else if (deqpairs[i].size() == deqSize && i % 2 == 0)
+            dpend.push_back(deqpairs[i]);
+        else if (deqpairs[i].size() == deqSize && i % 2 != 0) {
+            dmain.push_back(deqpairs[i]);
         }
     }
 
