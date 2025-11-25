@@ -37,4 +37,6 @@ class BitcoinExchange {
             int checkDate(const std::string& date);
 };
 
+bool isLeapYear(int year);
+
 #endif // BITCOINEXCHANGE_HPP
