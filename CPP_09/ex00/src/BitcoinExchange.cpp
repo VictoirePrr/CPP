@@ -15,13 +15,21 @@ BitcoinExchange::BitcoinExchange(std::ifstream &file) {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
-    (void)other;
+    _db = other._db;
+    _value = other._value;
+    _rate = other._rate;
+    _result = other._result;
+    isFirstLine = other.isFirstLine;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
     if (this != &other)
     {
-        (void)other;
+        _db = other._db;
+        _value = other._value;
+        _rate = other._rate;
+        _result = other._result;
+        isFirstLine = other.isFirstLine;
     }
     return *this;
 }

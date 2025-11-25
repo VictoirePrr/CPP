@@ -1,17 +1,18 @@
 #include "RPN.hpp"
 
 RPN::RPN() {
-
 }
 
-RPN::RPN(const RPN &other) {
-    (void)other;
+RPN::RPN(const RPN &other) :  _num(other._num), _res(other._res),
+ _op(other._op), _compute(other._compute) {
 }
 
 RPN &RPN::operator=(const RPN &other) {
-    if (this != &other)
-    {
-        (void)other;
+    if (this != &other) {
+        _op = other._op;
+        _res = other._res;
+        _num = other._num;
+        _compute = other._compute;
     }
     return *this;
 }
@@ -73,6 +74,8 @@ void RPN::polishOp(std::string expr) {
 
                 if (!_compute.empty()) {
                     doOp(_op[0], _compute.top());
+                    if (_res == -1)
+                        break;
                     _compute.pop();
                 }
             }
@@ -88,8 +91,8 @@ void RPN::polishOp(std::string expr) {
             _compute.push(_num);
         }
     }
-
-    std::cout << _res << std::endl;
+    if (_res != -1)
+        std::cout << _res << std::endl;
 }
 
 void RPN::findOp(char c) {
@@ -114,8 +117,15 @@ void RPN::doOp(char op, int &top) {
             break;
         case '-' : _res = top - _res;
             break;
-        case '/' : _res /= top;
-            break;
+        case '/' : {
+        if (top == 0) {
+            std::cout << "Error : division by 0." << std::endl;
+            _res = -1;
+        }
+        else
+            _res /= top;
+        break;
+        }
         case '*' : _res = top * _res;
             break;
         default: 

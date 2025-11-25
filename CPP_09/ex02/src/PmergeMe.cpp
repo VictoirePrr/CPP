@@ -4,12 +4,30 @@ PmergeMe::PmergeMe() {
 }
 
 PmergeMe::PmergeMe(const PmergeMe &other) {
-    (void)other;
+    vec = other.vec;
+    deq = other.deq;
+    vecpairs = other.vecpairs;
+    deqpairs = other.deqpairs;
+    vmain = other.vmain;
+    vpend = other.vpend;
+    dmain = other.dmain;
+    dpend = other.dpend;
+    vecSize = other.vecSize;
+    deqSize = other.deqSize;
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
-    if (this != &other)
-    {
+    if (this != &other) {
+        vec = other.vec;
+        deq = other.deq;
+        vecpairs = other.vecpairs;
+        deqpairs = other.deqpairs;
+        vmain = other.vmain;
+        vpend = other.vpend;
+        dmain = other.dmain;
+        dpend = other.dpend;
+        vecSize = other.vecSize;
+        deqSize = other.deqSize;
     }
     return *this;
 }
