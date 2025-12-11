@@ -80,7 +80,6 @@ void RPN::polishOp(std::string expr) {
                 }
             }
             _compute.push(_res);
-
         }
 
         else if (expr[i] == ' ')
@@ -121,9 +120,10 @@ void RPN::doOp(char op, int &top) {
         if (top == 0) {
             std::cout << "Error : division by 0." << std::endl;
             _res = -1;
+            break;
         }
         else
-            _res /= top;
+            _res = top / _res;
         break;
         }
         case '*' : _res = top * _res;
